@@ -21,8 +21,6 @@ In terms of errors, there are unlikely to be syntax or compile time errors as th
 
 ## Example computations
 
-## Language evaluation
+One example (as also mentioned earlier): Suppose you want to quickly animate a stick figure walking. You can simply make two legs that oscillate back and forth with one end as the pivot point. Specifcally, this would be drawing an image that is a single line at a slant, and saying that this image should oscillate at say, 30 degrees clockwise or counterclockwise from the upper point. Then draw the whole body to translate across the canvas (which would be done by simply drawing the path of translation), with the legs attached to the image of the entire figure, allowing the legs to move with the body. 
 
-## Implementation plan
-
-## Teamwork plan
+Another example: Suppose you want to make a tree that has leaves that looks like it is alive, blowing in the wind. You can draw the trunk and branches. And then define that each drawn image will now oscillate a little bit with the pivot default to being the point you start drawing at. You can then draw a bunch of leaves, and each one will be animating on its own. While it would take more time to get it to look just right how to want each leaf to oscillate relative to each other, it would be extremely quick and easy to just make this simple animation that would be tedious to do frame by frame.
