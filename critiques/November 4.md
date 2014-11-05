@@ -42,7 +42,7 @@ I think a key component of designing your domain-specific language will be decid
 
 I remember, from class, you said that you might explore the route of creating a handheld (mobile) application to support your domain-specific language, and I think this is a really great and novel idea. With regard to how much freedom it seems like you are trying to give the user in terms of what animations they can produce, I think the design of the interface by which your users are presented with your domain-specific language is of utmost importance and is worth spending a lot of time on. 
 
-## What are some interesting language design questions that the work will have to answer? In other words, what are the design challenges? Which design problems' solutions are you looking forward to hearing about at the end of the project?
+### What are some interesting language design questions that the work will have to answer? In other words, what are the design challenges? Which design problems' solutions are you looking forward to hearing about at the end of the project?
 
 As I mentioned previously, I think a very interesting language design challenge that you will face is designing the environment which houses your domain-specific language. I feel that another interesting challenge you will face is actually implementing the animations you wish to enable users to access more easily. The whole point of your project is to make animations more easy for users to produce, and in implementing this, you will have to build animations into your domain-specific language. We have already noted, by very nature of this project, that animations are a hard space to work in, so I am very interested to see how you overcome this challenge and build animations into your project!
 
