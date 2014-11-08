@@ -14,51 +14,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var createPathButton: UIButton!
     @IBOutlet weak var rotateClockwiseButton: UIButton!
     
-    var location = CGPoint(x: 0, y: 0)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         rotateClockwiseButton.addTarget(self, action: "rotateClockwise:", forControlEvents: UIControlEvents.TouchUpInside)
         
-        createPathButton.addTarget(self, action: "enablePathCreation:", forControlEvents: UIControlEvents.TouchUpInside)
+        createPathButton.addTarget(drawView, action: "triggerPathCreation:", forControlEvents: UIControlEvents.TouchUpInside)
         
-        
+        // temp image to animate
+        drawView.stickdude.image = UIImage(named:"rPQSRp6.jpg");
     }
     
-    func enablePathCreation(sender:UIButton!)
-    {
-        sender.selected = !sender.selected;
-        
-        if createPathButton.state == UIControlState.Selected {
-            drawView.stickdude.userInteractionEnabled = true
-        } else {
-            drawView.stickdude.userInteractionEnabled = false
-        }
-        
-    }
-    
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        
-        var touch : UITouch! = touches.anyObject() as UITouch
-        
-        location = touch.locationInView(self.view)
-        
-        drawView.stickdude.center = location
-        
-    }
-    
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        
-        var touch : UITouch! = touches.anyObject() as UITouch
-        
-        location = touch.locationInView(self.view)
-        
-        drawView.stickdude.center = location
-        
-    }
-    
+
     func rotateClockwise(sender:UIButton!)
     {
         let duration = 2.0

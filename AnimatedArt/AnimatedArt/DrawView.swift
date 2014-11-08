@@ -10,10 +10,15 @@ import UIKit
 
 class DrawView: UIView {
     
-    var lines: [Line] = []
+    var waypoints: [Line] = []
     var lastPoint: CGPoint!
     // default color
     var drawColor = UIColor.blackColor()
+    
+    var tracePath: Bool = false
+    
+//    var lastUpdateTime: NSTimeInterval = 0.0
+//    var dt: NSTimeInterval = 0.0
     
     // example image to animate
     @IBOutlet weak var stickdude: UIImageView!
@@ -24,23 +29,64 @@ class DrawView: UIView {
         
         // temporary background color
         backgroundColor = UIColor.lightGrayColor()
+       
+    }
+    
+//    func move(dt: NSTimeInterval) {
+//        let currentPosition = position
+//        var newPosition = position
+//        
+//        // if there are no more, we are done
+//        if waypoints.count > 0 {
+//            let targetPoint = wayPoints[0]
+//            
+//            // calculate direction vector
+//            let offset = CGPoint(x: targetPoint.x - currentPosition.x, y: targetPoint.y - currentPosition.y)
+//            let length = Double(sqrtf(Float(offset.x * offset.x) + Float(offset.y * offset.y)))
+//            let direction = CGPoint(x:CGFloat(offset.x) / CGFloat(length), y: CGFloat(offset.y) / CGFloat(length))
+//            velocity = CGPoint(x: direction.x * POINTS_PER_SEC, y: direction.y * POINTS_PER_SEC)
+//            
+//            // calculate new position
+//            newPosition = CGPoint(x:currentPosition.x + velocity.x * CGFloat(dt), y:currentPosition.y + velocity.y * CGFloat(dt))
+//            position = newPosition
+//            
+//            // removing waypoints to always have next one as first
+//            if frame.contains(targetPoint) {
+//                wayPoints.removeAtIndex(0)
+//            }
+//        }
+//    }
+    
+    func triggerPathCreation(sender:UIButton!)
+    {
+        sender.selected = !sender.selected;
         
-        // temp image to animate
-        stickdude.image = UIImage(named:"rPQSRp6.jpg");
+        if sender.selected {
+            tracePath = true
+        } else {
+            tracePath = false
+        }
+        
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        lastPoint = touches.anyObject()?.locationInView(self)
-        stickdude.center = lastPoint
+        if tracePath {
+            lastPoint = touches.anyObject()?.locationInView(self)
+            stickdude.center = lastPoint
+        }
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        var newPoint = touches.anyObject()!.locationInView(self)
-        lines.append(Line(start: lastPoint, end: newPoint, color: drawColor))
-        lastPoint = newPoint
+        if tracePath {
+            var newPoint = touches.anyObject()!.locationInView(self)
+            waypoints.append(Line(start: lastPoint, end: newPoint, color: drawColor))
+            lastPoint = newPoint
         
-        // this will redraw view
-        self.setNeedsDisplay()
+            stickdude.center = lastPoint
+        
+            // this will redraw view
+            self.setNeedsDisplay()
+        }
     }
     
     override func drawRect(rect: CGRect) {
@@ -49,7 +95,7 @@ class DrawView: UIView {
         // set width of line
         CGContextSetLineWidth(context, 5)
         CGContextSetLineCap(context, kCGLineCapRound)
-        for line in lines {
+        for line in waypoints {
             CGContextMoveToPoint(context, line.start.x, line.start.y)
             CGContextAddLineToPoint(context, line.end.x, line.end.y)
             // set color of line
@@ -57,4 +103,6 @@ class DrawView: UIView {
             CGContextStrokePath(context)
         }
     }
+    
+    
 }

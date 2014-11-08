@@ -85,13 +85,13 @@
 			children = (
 				269BADDF1A0C45CD00590134 /* AppDelegate.swift */,
 				269BADE11A0C45CD00590134 /* ViewController.swift */,
+				269BAE011A0C6C3E00590134 /* DrawView.swift */,
+				269BAE031A0C71CD00590134 /* Line.swift */,
 				269BADE31A0C45CD00590134 /* Main.storyboard */,
 				269BADE61A0C45CD00590134 /* Images.xcassets */,
 				269BADFF1A0C465900590134 /* rPQSRp6.jpg */,
 				269BADE81A0C45CD00590134 /* LaunchScreen.xib */,
 				269BADDD1A0C45CD00590134 /* Supporting Files */,
-				269BAE011A0C6C3E00590134 /* DrawView.swift */,
-				269BAE031A0C71CD00590134 /* Line.swift */,
 			);
 			path = AnimatedArt;
 			sourceTree = "<group>";
