@@ -32,7 +32,20 @@ Another error the user could run into is by making too many animations. It is po
 
 - What tool support (e.g., error-checking, development environments) does your project provide?
 
+My project will provide a pretty strict development environment, and that is through an iOS app. In terms of tool support, it will all be done through the app, as that is where the user will be able to interface with the language for creation, as well as run their animation to see the result. My goal is also to allow for the animations to be saved in some form, such as a gif, and so it can be exported to other environments (i.e. shared with others), although the development environment will simply be through the app.
+
 - Are there any other DSLs for this domain? If so, what are they, and how does your language compare to these other languages?
+
+There are a number of different DSLs in this domain. Perhaps the most prominent of these is Adobe Flash, as that is really the go-to application for animation. My language will be much lighter and specific in scope compared to Flash. The goal is to make it far easier to get started using my DSL, versus Flash which has a lot of capability, but also a big learning curve. 
+
+
+
+
+STILL NEED TO ADD OTHER DSLS IN THIS DOMAIN
+
+
+
+
 
 ## Language implementation
 
