@@ -14,6 +14,8 @@ The basic computation is for the user to define the attributes of a given image 
 
 The idea is to have the user draw the image, which will be the basis for the data structure. That image can then be manipulated by adding attributes for how that image should be animated, as well as nested animated images. This may also involve a chaining of animations, in which case the order in which the attributes are defined are relevant to the order the image is animated.
 
+Thus, there will be the highest level data structure, which is an "Animatable" image. It will have the property of a list of "Animations". An "Animation"  will be an abstract type with the speed/rate of the animations. Each type of animation will implement the "Animation" type. One will be "Rotate", which is have clockwise/counterclockwise. Another will be "Translate", which will have a list that is the path of points to traverse. Another type will be oscillation, which will consist of the point of oscillation, as well as angle to oscillate. 
+
 - What are the basic control structures in your DSL, if any? How does the user specify or manipulate control flow?
 
 The basic control structures will simply be the order that the user defines the animations in. The point is for there to be no complex control structures, and for it to be intuitive in the sense that the user imagines the order it should be animated, and that is the order they define the animations.
