@@ -31,7 +31,7 @@ Thus, there will be the highest level data structure, which is an "Animatable" i
 To reiterate, this is
 
 * Animatable (image with attributes)
-..* List of animations
+List of animations
 
 * Animation (abstract class which all the classes below implement)
 ..* Speed/Rate
