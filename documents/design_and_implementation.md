@@ -90,8 +90,14 @@ STILL NEED TO ADD OTHER DSLS IN THIS DOMAIN
 
 ### Your choice of an internal vs. external implementation and how and why you made that choice.
 
+I chose an external DSL by virtue of the fact that I wanted to make the input touch-based. I wanted the creative process of making these drawn animations interactive, and by defining this through text and strict syntax would go against that goal. The only natural way to do this would necessarily be an "external" DSL, as the input is through a GUI rather than specific syntax of some programming language.
+
 ### Your choice of a host language and how and why you made that choice.
 
+I chose Swift as the host language as I knew I wanted to develop a touch-based app, which would be more natural to do in Swift/Objective-C or Java. Swift/Objective-C has very robust API for animations and sprites through SpriteKit, and iOS development is something I am more familiar with, so I decided to go with that. I decide on Swift over Objective-C primarily because I was really interested in learning Swift as a language and the features it offers, but also because I believe (and hope!) that what I am trying to do will be feasible simply through Swift, and not need to also interface with Objective-C (for more obscure libraries).
+
 ### Any significant syntax design decisions you've made and the reasons for those decisions.
+
+Syntax decisions for my project would be interface designs, and I would say one major one I have made is the order for user interaction. One of the original design intentions I had was to allow for the user to specify the animation first, and be able to draw multiple images with that animation. One concern for this is with defining distinct images (when is the user done with current drawing to animate?). Another one, and perhaps more important to the design, is that it may complicate the experience to the extent that it would be significantly less intuitive the order to do things in. In this way, I wanted to restrict the interface in a way to allow for a more linear way of development.
 
 ### An overview of the architecture of your system.
