@@ -30,35 +30,27 @@ Thus, there will be the highest level data structure, which is an "Animatable" i
 
 To reiterate, this is
 
-* Animatable (image with attributes)
+*Animatable* (image with attributes)
+- List of animations
 
-List of animations
+*Animation* (abstract class which all the classes below implement)
+- Speed/Rate
 
-* Animation (abstract class which all the classes below implement)
+*Rotate*
+- Clockwise/Counterclockwise
 
-Speed/Rate
+*Move*
+- Path
 
-* Rotate
+*Oscillate*
+- Pivot Point
+- Degrees of oscillation
 
-Clockwise/Counterclockwise
+*Transparency*
+- Range - max min (% between 0 and 100)
 
-* Move
-
-Path
-
-* Oscillate
-
-Pivot Point
-
-Degrees of oscillation
-
-* Transparency
-
-Range - max min (% between 0 and 100)
-
-* Scale/Expand
-
-Range - max min (between x0 and x5 or something)
+*Scale/Expand*
+- Range - max min (between x0 and x5 or something)
 
 ### What are the basic control structures in your DSL, if any? How does the user specify or manipulate control flow?
 
