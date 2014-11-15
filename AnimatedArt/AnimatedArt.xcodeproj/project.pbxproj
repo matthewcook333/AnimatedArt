@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2627F92E1A15F66A004FECE1 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2627F92D1A15F66A004FECE1 /* Animatable.swift */; };
+		2627F9301A15F6E4004FECE1 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2627F92F1A15F6E4004FECE1 /* Animation.swift */; };
 		269BADE01A0C45CD00590134 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269BADDF1A0C45CD00590134 /* AppDelegate.swift */; };
 		269BADE21A0C45CD00590134 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269BADE11A0C45CD00590134 /* ViewController.swift */; };
 		269BADE51A0C45CD00590134 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 269BADE31A0C45CD00590134 /* Main.storyboard */; };
@@ -29,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2627F92D1A15F66A004FECE1 /* Animatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
+		2627F92F1A15F6E4004FECE1 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Animation.swift; path = ../Animation.swift; sourceTree = "<group>"; };
 		269BADDA1A0C45CD00590134 /* AnimatedArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatedArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		269BADDE1A0C45CD00590134 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		269BADDF1A0C45CD00590134 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 		269BADDC1A0C45CD00590134 /* AnimatedArt */ = {
 			isa = PBXGroup;
 			children = (
+				2627F92F1A15F6E4004FECE1 /* Animation.swift */,
+				2627F92D1A15F66A004FECE1 /* Animatable.swift */,
 				269BADDF1A0C45CD00590134 /* AppDelegate.swift */,
 				269BADE11A0C45CD00590134 /* ViewController.swift */,
 				269BAE011A0C6C3E00590134 /* DrawView.swift */,
@@ -226,6 +232,8 @@
 				269BAE041A0C71CD00590134 /* Line.swift in Sources */,
 				269BADE01A0C45CD00590134 /* AppDelegate.swift in Sources */,
 				269BAE021A0C6C3E00590134 /* DrawView.swift in Sources */,
+				2627F9301A15F6E4004FECE1 /* Animation.swift in Sources */,
+				2627F92E1A15F66A004FECE1 /* Animatable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
