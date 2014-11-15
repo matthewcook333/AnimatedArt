@@ -75,15 +75,9 @@ My project will provide a pretty strict development environment, and that is thr
 
 ### Are there any other DSLs for this domain? If so, what are they, and how does your language compare to these other languages?
 
-There are a number of different DSLs in this domain. Perhaps the most prominent of these is Adobe Flash, as that is really the go-to application for animation. My language will be much lighter and specific in scope compared to Flash. The goal is to make it far easier to get started using my DSL, versus Flash which has a lot of capability, but also a big learning curve. 
+There are a number of different DSLs in this domain. Perhaps the most prominent of these is Adobe Flash, as that is really the go-to application for animation. My language will be much lighter and specific in scope compared to Flash. The goal is to make it far easier to get started using my DSL, versus Flash which has a lot of capability, but also a big learning curve. Beyond static frame-by-frame, Flash actually has similar capabilities to mine to allow for putting an image in location, and then another, and using a "tween" which makes a path to animate between those two.
 
-
-
-
-STILL NEED TO ADD OTHER DSLS IN THIS DOMAIN
-
-
-
+There are other DSLs as well that Paul pointed out, the first one which is ActionScript. This does look pretty similar to what I am trying to do as it allows for specific animations. The one main difference is the purpose of the language, as mine is to allow for more simply a creative outlet for drawing and animating different things quickly, while ActionScript seems well-suited for tinkering with the specific animation of some image to get it right (also, the platforms for the two are very different). BannerZest seems very specific to certain types of animated words/banners. This allows them to make it easy to make cooler/more complicated animations, but in an even more specific domain of animating specifically organized banners. Pyglet is more of the backend library for what my language is, as it looks similar to what "Core Animation" is in iOS. 
 
 
 ## Language implementation
@@ -101,3 +95,32 @@ I chose Swift as the host language as I knew I wanted to develop a touch-based a
 Syntax decisions for my project would be interface designs, and I would say one major one I have made is the order for user interaction. One of the original design intentions I had was to allow for the user to specify the animation first, and be able to draw multiple images with that animation. One concern for this is with defining distinct images (when is the user done with current drawing to animate?). Another one, and perhaps more important to the design, is that it may complicate the experience to the extent that it would be significantly less intuitive the order to do things in. In this way, I wanted to restrict the interface in a way to allow for a more linear way of development.
 
 ### An overview of the architecture of your system.
+
+So far, a sketch of the overall architecture will include:
+
+Main view controller - Controlling overall logic of the app
+
+Draw View - Allow for drawing on and where the images are animated
+
+Animate View - Side table view that has the different types of animations and the details for each.
+
+Command View - Another side view for the commands to say current animation is done, nesting, etc.
+
+Animatable - SpriteNode that holds the image it represents as well as animations
+
+Animation - Has property of speed/rate
+
+There will then be multiple types of animation, that all are "Animation"s:
+
+Rotation - Clockwise or counterclockwise
+
+Translation - List of points comprising the path to traverse
+
+Oscillation - Pivot point and degrees of oscillation
+
+Transparency - Range of transparency in percentages (max and min)
+
+Scale/Expansion - Range of scale in multiples (max and min)
+
+
+
