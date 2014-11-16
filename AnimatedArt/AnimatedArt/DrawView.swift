@@ -21,11 +21,13 @@ class DrawView: UIView {
 //    var dt: NSTimeInterval = 0.0
     
     // example image to animate
-    @IBOutlet weak var stickdude: UIImageView!
+    var currentAnimatable: Animatable!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         // init code here
+        
+        currentAnimatable = Animatable(imageNamed: "sample.jpg")
         
         // temporary background color
         backgroundColor = UIColor.lightGrayColor()
@@ -57,6 +59,11 @@ class DrawView: UIView {
 //        }
 //    }
     
+    func doneButtonPressed(sender:UIButton!)
+    {
+        print("hahaha")
+    }
+    
     func triggerPathCreation(sender:UIButton!)
     {
         sender.selected = !sender.selected;
@@ -72,7 +79,7 @@ class DrawView: UIView {
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         if tracePath {
             lastPoint = touches.anyObject()?.locationInView(self)
-            stickdude.center = lastPoint
+            currentAnimatable.center = lastPoint
         }
     }
     
@@ -82,7 +89,7 @@ class DrawView: UIView {
             waypoints.append(Line(start: lastPoint, end: newPoint, color: drawColor))
             lastPoint = newPoint
         
-            stickdude.center = lastPoint
+            currentAnimatable.center = lastPoint
         
             // this will redraw view
             self.setNeedsDisplay()

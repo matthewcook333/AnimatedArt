@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var createPathButton: UIButton!
     @IBOutlet weak var rotateClockwiseButton: UIButton!
     
+    @IBOutlet weak var doneButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -22,8 +24,12 @@ class ViewController: UIViewController {
         
         createPathButton.addTarget(drawView, action: "triggerPathCreation:", forControlEvents: UIControlEvents.TouchUpInside)
         
-        // temp image to animate
-        drawView.stickdude.image = UIImage(named:"rPQSRp6.jpg");
+        doneButton.addTarget(drawView, action: "doneButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+        
+//        // temp image
+//        if let tempImage = UIImage(named: "sample.jpg") {
+//            drawView.currentAnimatable.image = tempImage
+//        }
     }
     
 
@@ -42,15 +48,15 @@ class ViewController: UIViewController {
             // Because we're using `CalculationModePaced` these values are ignored
             // and iOS figures out values that are needed to create a smooth constant transition
             UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 0, animations: {
-                self.drawView.stickdude.transform = CGAffineTransformMakeRotation(1/3 * fullRotation)
+                self.drawView.currentAnimatable.transform = CGAffineTransformMakeRotation(1/3 * fullRotation)
             })
             
             UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 0, animations: {
-                self.drawView.stickdude.transform = CGAffineTransformMakeRotation(2/3 * fullRotation)
+                self.drawView.currentAnimatable.transform = CGAffineTransformMakeRotation(2/3 * fullRotation)
             })
             
             UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 0, animations: {
-                self.drawView.stickdude.transform = CGAffineTransformMakeRotation(3/3 * fullRotation)
+                self.drawView.currentAnimatable.transform = CGAffineTransformMakeRotation(3/3 * fullRotation)
             })
             
             }, completion: nil)

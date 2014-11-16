@@ -6,12 +6,25 @@
 //  Copyright (c) 2014 Matthew Cook. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class Animatable: SKSpriteNode {
+class Animatable: UIImageView {
     
-    var animations: [Animation] = []
+    //var animations: [Animation] = []
     var animate = false
+    
+    init(imageNamed name: String!) {
+        let location = CGRectMake(10, 10, 50, 50)
+        super.init(frame: location)
+        self.image = UIImage(named: name)
+        
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     
     
 

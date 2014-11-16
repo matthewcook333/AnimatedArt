@@ -8,13 +8,3 @@
 
 import Foundation
 
-
-protocol Animation {
-    var speed : Int
-    
-    func run()
-}
-
-class Dog : Animal {
-    func run() {}
-}
