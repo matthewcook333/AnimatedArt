@@ -10,6 +10,7 @@
 		2627F92E1A15F66A004FECE1 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2627F92D1A15F66A004FECE1 /* Animatable.swift */; };
 		2627F9301A15F6E4004FECE1 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2627F92F1A15F6E4004FECE1 /* Animation.swift */; };
 		2627F9341A1949A6004FECE1 /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2627F9331A1949A6004FECE1 /* sample.jpg */; };
+		268AAFE91A1B05AD0087BE5D /* AnimationMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268AAFE81A1B05AD0087BE5D /* AnimationMenuView.swift */; };
 		269BADE01A0C45CD00590134 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269BADDF1A0C45CD00590134 /* AppDelegate.swift */; };
 		269BADE21A0C45CD00590134 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269BADE11A0C45CD00590134 /* ViewController.swift */; };
 		269BADE51A0C45CD00590134 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 269BADE31A0C45CD00590134 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 		2627F92D1A15F66A004FECE1 /* Animatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
 		2627F92F1A15F6E4004FECE1 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Animation.swift; path = ../Animation.swift; sourceTree = "<group>"; };
 		2627F9331A1949A6004FECE1 /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sample.jpg; path = Images.xcassets/sample.jpg; sourceTree = "<group>"; };
+		268AAFE81A1B05AD0087BE5D /* AnimationMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationMenuView.swift; sourceTree = "<group>"; };
 		269BADDA1A0C45CD00590134 /* AnimatedArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatedArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		269BADDE1A0C45CD00590134 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		269BADDF1A0C45CD00590134 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				2627F9331A1949A6004FECE1 /* sample.jpg */,
 				269BADE81A0C45CD00590134 /* LaunchScreen.xib */,
 				269BADDD1A0C45CD00590134 /* Supporting Files */,
+				268AAFE81A1B05AD0087BE5D /* AnimationMenuView.swift */,
 			);
 			path = AnimatedArt;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				269BADE01A0C45CD00590134 /* AppDelegate.swift in Sources */,
 				269BAE021A0C6C3E00590134 /* DrawView.swift in Sources */,
 				2627F9301A15F6E4004FECE1 /* Animation.swift in Sources */,
+				268AAFE91A1B05AD0087BE5D /* AnimationMenuView.swift in Sources */,
 				2627F92E1A15F66A004FECE1 /* Animatable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

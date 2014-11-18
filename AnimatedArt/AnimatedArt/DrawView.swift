@@ -17,11 +17,10 @@ class DrawView: UIView {
     
     var tracePath: Bool = false
     
-//    var lastUpdateTime: NSTimeInterval = 0.0
-//    var dt: NSTimeInterval = 0.0
-    
     // example image to animate
     var currentAnimatable: Animatable!
+    
+
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -38,7 +37,8 @@ class DrawView: UIView {
     
     func doneButtonPressed(sender:UIButton!)
     {
-        print("hahaha")
+        currentAnimatable = Animatable(imageNamed: "sample.jpg")
+        self.addSubview(currentAnimatable)
     }
     
     func triggerPathCreation(sender:UIButton!)
