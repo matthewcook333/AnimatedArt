@@ -10,20 +10,37 @@ import UIKit
 
 class Animatable: UIImageView {
     
-    //var animations: [Animation] = []
-    var animate = false
-    
     init(imageNamed name: String!) {
-        let location = CGRectMake(10, 10, 50, 50)
-        super.init(frame: location)
+        super.init(frame: CGRectMake(100, 150, 150, 150))
         self.image = UIImage(named: name)
-        
     }
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    var imgAngle: Double = 0;
+    func doRotate(clockwise: Bool, speed: Int)
+    {
+        var animation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        animation.duration = CFTimeInterval(speed)
+        animation.additive = true;
+        animation.removedOnCompletion = false;
+        animation.fillMode = kCAFillModeForwards;
+        animation.fromValue = NSNumber(double:( imgAngle ) / 180.0 * M_PI )
+        if clockwise {
+            animation.toValue = NSNumber(double: (( imgAngle ) / 180.0 * M_PI) + 90)
+        } else {
+            animation.toValue = NSNumber(double: (( imgAngle ) / 180.0 * M_PI) - 90)
+        }
+        self.layer.addAnimation(animation, forKey: "90rotation")
+        
+        imgAngle+=90;
+        if (imgAngle>360) {
+            imgAngle = 0;
+        }
+    }
     
     
     

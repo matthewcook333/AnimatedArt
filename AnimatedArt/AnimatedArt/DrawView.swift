@@ -28,36 +28,13 @@ class DrawView: UIView {
         // init code here
         
         currentAnimatable = Animatable(imageNamed: "sample.jpg")
+        self.addSubview(currentAnimatable)
         
         // temporary background color
         backgroundColor = UIColor.lightGrayColor()
        
     }
-    
-//    func move(dt: NSTimeInterval) {
-//        let currentPosition = position
-//        var newPosition = position
-//        
-//        // if there are no more, we are done
-//        if waypoints.count > 0 {
-//            let targetPoint = wayPoints[0]
-//            
-//            // calculate direction vector
-//            let offset = CGPoint(x: targetPoint.x - currentPosition.x, y: targetPoint.y - currentPosition.y)
-//            let length = Double(sqrtf(Float(offset.x * offset.x) + Float(offset.y * offset.y)))
-//            let direction = CGPoint(x:CGFloat(offset.x) / CGFloat(length), y: CGFloat(offset.y) / CGFloat(length))
-//            velocity = CGPoint(x: direction.x * POINTS_PER_SEC, y: direction.y * POINTS_PER_SEC)
-//            
-//            // calculate new position
-//            newPosition = CGPoint(x:currentPosition.x + velocity.x * CGFloat(dt), y:currentPosition.y + velocity.y * CGFloat(dt))
-//            position = newPosition
-//            
-//            // removing waypoints to always have next one as first
-//            if frame.contains(targetPoint) {
-//                wayPoints.removeAtIndex(0)
-//            }
-//        }
-//    }
+
     
     func doneButtonPressed(sender:UIButton!)
     {
@@ -111,5 +88,43 @@ class DrawView: UIView {
         }
     }
     
+    func rotateClockwise(sender:UIButton!)
+    {
+        sender.selected = !sender.selected
+        
+        if sender.selected {
+            currentAnimatable.doRotate(true, speed: 30)
+        } else {
+            currentAnimatable.layer.removeAnimationForKey("90rotation")
+        }
+    }
+
+    
+    
+    
+    //    func move(dt: NSTimeInterval) {
+    //        let currentPosition = position
+    //        var newPosition = position
+    //
+    //        // if there are no more, we are done
+    //        if waypoints.count > 0 {
+    //            let targetPoint = wayPoints[0]
+    //
+    //            // calculate direction vector
+    //            let offset = CGPoint(x: targetPoint.x - currentPosition.x, y: targetPoint.y - currentPosition.y)
+    //            let length = Double(sqrtf(Float(offset.x * offset.x) + Float(offset.y * offset.y)))
+    //            let direction = CGPoint(x:CGFloat(offset.x) / CGFloat(length), y: CGFloat(offset.y) / CGFloat(length))
+    //            velocity = CGPoint(x: direction.x * POINTS_PER_SEC, y: direction.y * POINTS_PER_SEC)
+    //
+    //            // calculate new position
+    //            newPosition = CGPoint(x:currentPosition.x + velocity.x * CGFloat(dt), y:currentPosition.y + velocity.y * CGFloat(dt))
+    //            position = newPosition
+    //
+    //            // removing waypoints to always have next one as first
+    //            if frame.contains(targetPoint) {
+    //                wayPoints.removeAtIndex(0)
+    //            }
+    //        }
+    //    }
     
 }
