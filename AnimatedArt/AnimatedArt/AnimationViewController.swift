@@ -13,12 +13,15 @@ class AnimationViewController: UIViewController {
     var pathView: PathView!// =  RotateView(frame: self.view.frame)
     var scaleView: ScaleView!// =  RotateView(frame: self.view.frame)
 
-    @IBOutlet weak var rotateView: UIView!
+    @IBOutlet weak var rotateView: RotateView!
     
     override func viewDidLoad() {
 //        rotateView = RotateView(frame: self.view.frame)
 //        pathView = PathView(frame: self.view.frame)
 //        scaleView = ScaleView(frame: self.view.frame)
+        
+        rotateView.clockwiseButton.addTarget(rotateView, action: "rotateClockwise:", forControlEvents: UIControlEvents.TouchUpInside)
+
     }
     
     func changeView(animationType: String) {

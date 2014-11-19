@@ -20,27 +20,27 @@ class Animatable: UIImageView {
     }
     
     
-    var imgAngle: Double = 0;
-    func doRotate(clockwise: Bool, speed: Int)
-    {
-        var animation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-        animation.duration = CFTimeInterval(speed)
-        animation.additive = true;
-        animation.removedOnCompletion = false;
-        animation.fillMode = kCAFillModeForwards;
-        animation.fromValue = NSNumber(double:( imgAngle ) / 180.0 * M_PI )
-        if clockwise {
-            animation.toValue = NSNumber(double: (( imgAngle ) / 180.0 * M_PI) + 90)
-        } else {
-            animation.toValue = NSNumber(double: (( imgAngle ) / 180.0 * M_PI) - 90)
-        }
-        self.layer.addAnimation(animation, forKey: "90rotation")
-        
-        imgAngle+=90;
-        if (imgAngle>360) {
-            imgAngle = 0;
-        }
-    }
+//    var imgAngle: Double = 0;
+//    func doRotate(clockwise: Bool, speed: Int)
+//    {
+//        var animation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+//        animation.duration = CFTimeInterval(speed)
+//        animation.additive = true;
+//        animation.removedOnCompletion = false;
+//        animation.fillMode = kCAFillModeForwards;
+//        animation.fromValue = NSNumber(double:( imgAngle ) / 180.0 * M_PI )
+//        if clockwise {
+//            animation.toValue = NSNumber(double: (( imgAngle ) / 180.0 * M_PI) + 90)
+//        } else {
+//            animation.toValue = NSNumber(double: (( imgAngle ) / 180.0 * M_PI) - 90)
+//        }
+//        self.layer.addAnimation(animation, forKey: "90rotation")
+//        
+//        imgAngle+=90;
+//        if (imgAngle>360) {
+//            imgAngle = 0;
+//        }
+//    }
     
     
     

@@ -31,12 +31,23 @@ class DrawView: UIView {
         
         // temporary background color
         backgroundColor = UIColor.lightGrayColor()
+        
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "doAnimation:", name: "animate", object: nil)
        
     }
     
-    func doAnimation(animation: CAAnimation) {
+    func doAnimation(notification:NSNotification) {
         
+        let userInfo:Dictionary<String,String!> = notification.userInfo as Dictionary<String,String!>
+        let messageString = userInfo["message"]
+        
+        print(messageString)
     }
+    
+//    func doAnimation(animation: CAAnimation) {
+//        currentAnimatable.layer.addAnimation(animation, forKey: "someAnimation")
+//    }
 
     
     func doneButtonPressed(sender:UIButton!)
@@ -92,16 +103,16 @@ class DrawView: UIView {
         }
     }
     
-    func rotateClockwise(sender:UIButton!)
-    {
-        sender.selected = !sender.selected
-        
-        if sender.selected {
-            currentAnimatable.doRotate(true, speed: 30)
-        } else {
-            currentAnimatable.layer.removeAnimationForKey("90rotation")
-        }
-    }
+//    func rotateClockwise(sender:UIButton!)
+//    {
+//        sender.selected = !sender.selected
+//        
+//        if sender.selected {
+//            currentAnimatable.doRotate(true, speed: 30)
+//        } else {
+//            currentAnimatable.layer.removeAnimationForKey("90rotation")
+//        }
+//    }
 
     
     

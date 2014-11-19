@@ -34,7 +34,7 @@ class ViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDeleg
         
         animationViewController = AnimationViewController()
         
-        animationViewController.rotateView.clockwiseButton.addTarget(drawView, action: "rotateClockwise:", forControlEvents: UIControlEvents.TouchUpInside)
+//        animationViewController.rotateView.clockwiseButton.addTarget(drawView, action: "rotateClockwise:", forControlEvents: UIControlEvents.TouchUpInside)
         
         createPathButton.addTarget(drawView, action: "triggerPathCreation:", forControlEvents: UIControlEvents.TouchUpInside)
         
@@ -45,10 +45,6 @@ class ViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDeleg
         animationPicker.hidden = true
         animationPicker.delegate = self
         animationField.delegate = self
-    }
-    
-    func doAnimation(animation: CAAnimation) {
-        drawView.doAnimation(animation)
     }
     
 
