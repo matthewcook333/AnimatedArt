@@ -10,36 +10,54 @@ import UIKit
 
 class RotateView: UIView {
     
-    @IBOutlet weak var clockwiseButton :UIButton!
-
+    //@IBOutlet weak var clockwiseButton :UIButton!
+    @IBOutlet weak var directionButton :UISegmentedControl!
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        
-        
        // NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateNotificationSentLabel", name: mySpecialNotificationKey, object: nil)
 
     }
     
-    func rotateClockwise(sender:UIButton!)
+    
+    
+    func createRotation(sender:UISegmentedControl!)
     {
-        sender.selected = !sender.selected
-        NSNotificationCenter.defaultCenter().postNotificationName("animate", object: nil, userInfo: ["message":"blah"])
+        if sender.selectedSegmentIndex == 1 {
+            let animation:CAAnimation = rotationAnimation(true, speed: 30)
+            NSNotificationCenter.defaultCenter().postNotificationName("rotate", object: nil, userInfo: ["animation":animation])
+        } else if sender.selectedSegmentIndex == 2 {
+            let animation:CAAnimation = rotationAnimation(false, speed: 30)
+            NSNotificationCenter.defaultCenter().postNotificationName("rotate", object: nil, userInfo: ["animation":animation])
+        }
+        else {
+            NSNotificationCenter.defaultCenter().postNotificationName("rotate", object: nil, userInfo: [:])
+            
+        }
+        
+//        sender.selected = !sender.selected
+//
+//        
+//        
 //        if sender.selected {
-//            var animation = rotationAnimation(true, speed: 30)
-//            
+//            let animation:CAAnimation = rotationAnimation(true, speed: 30)
+//            NSNotificationCenter.defaultCenter().postNotificationName("rotate", object: nil, userInfo: ["animation":animation])
 //        } else {
-//            currentAnimatable.layer.removeAnimationForKey("90rotation")
+//            NSNotificationCenter.defaultCenter().postNotificationName("rotate", object: nil, userInfo: [:])
+//
 //        }
+        
+        
     }
     
     var imgAngle: Double = 0;
-    func rotationAnimation(clockwise: Bool, speed: Int)
+    func rotationAnimation(clockwise: Bool, speed: Int) -> CAAnimation
     {
         var animation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         animation.duration = CFTimeInterval(speed)
         animation.additive = true;
         animation.removedOnCompletion = false;
+        animation.repeatCount = Float.infinity
         animation.fillMode = kCAFillModeForwards;
         animation.fromValue = NSNumber(double:( imgAngle ) / 180.0 * M_PI )
         if clockwise {
@@ -47,12 +65,14 @@ class RotateView: UIView {
         } else {
             animation.toValue = NSNumber(double: (( imgAngle ) / 180.0 * M_PI) - 90)
         }
-        self.layer.addAnimation(animation, forKey: "90rotation")
+        //self.layer.addAnimation(animation, forKey: "90rotation")
         
         imgAngle+=90;
         if (imgAngle>360) {
             imgAngle = 0;
         }
+        
+        return animation
     }
     
     

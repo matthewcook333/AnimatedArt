@@ -33,22 +33,31 @@ class DrawView: UIView {
         backgroundColor = UIColor.lightGrayColor()
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "doAnimation:", name: "animate", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "triggerRotation:", name: "rotate", object: nil)
        
+    }
+    
+    func triggerRotation(notification:NSNotification) {
+        
+        let userInfo:Dictionary<String,CAAnimation!> = notification.userInfo as Dictionary<String,CAAnimation!>
+        
+        let animation :CAAnimation? = userInfo["animation"]
+        
+        currentAnimatable.layer.removeAnimationForKey("rotation")
+        if animation != nil {
+            currentAnimatable.layer.addAnimation(animation, forKey: "rotation")
+        } else {
+            //currentAnimatable.layer.removeAnimationForKey("rotation")
+        }
     }
     
     func doAnimation(notification:NSNotification) {
         
-        let userInfo:Dictionary<String,String!> = notification.userInfo as Dictionary<String,String!>
-        let messageString = userInfo["message"]
+        let userInfo:Dictionary<String,CAAnimation!> = notification.userInfo as Dictionary<String,CAAnimation!>
+        let animation :CAAnimation = userInfo["animation"]!
         
-        print(messageString)
+        currentAnimatable.layer.addAnimation(animation, forKey: "aniONE")
     }
-    
-//    func doAnimation(animation: CAAnimation) {
-//        currentAnimatable.layer.addAnimation(animation, forKey: "someAnimation")
-//    }
-
     
     func doneButtonPressed(sender:UIButton!)
     {
