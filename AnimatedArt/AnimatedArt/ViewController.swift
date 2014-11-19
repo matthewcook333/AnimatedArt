@@ -16,8 +16,6 @@ class ViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDeleg
     var animationViewController: AnimationViewController!
     
     @IBOutlet weak var createPathButton: UIButton!
-    @IBOutlet weak var rotateClockwiseButton: UIButton!
-    
 
     @IBOutlet weak var doneButton: UIButton!
     
@@ -27,40 +25,30 @@ class ViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDeleg
 
     @IBOutlet var animationPicker: UIPickerView! = UIPickerView()
     
-    let animationTypes = ["Rotate","Move","Oscillate","Fade","Expand"]
+    let animationTypes = ["Rotate","Path","Oscillate","Fade","Scale"]
     let screenSize: CGRect = UIScreen.mainScreen().bounds
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        rotateClockwiseButton.addTarget(drawView, action: "rotateClockwise:", forControlEvents: UIControlEvents.TouchUpInside)
+        animationViewController = AnimationViewController()
+        
+        animationViewController.rotateView.clockwiseButton.addTarget(drawView, action: "rotateClockwise:", forControlEvents: UIControlEvents.TouchUpInside)
         
         createPathButton.addTarget(drawView, action: "triggerPathCreation:", forControlEvents: UIControlEvents.TouchUpInside)
         
         doneButton.addTarget(drawView, action: "doneButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
+        
+        
         animationPicker.hidden = true
         animationPicker.delegate = self
-        
-        
-//        animationLabel = UILabel(frame: CGRectMake(screenSize.width-250, 30, 50, 50))
-//        animationLabel.text = "Animation: "
-//        animationLabel.sizeToFit()
-//        containerView.addSubview(animationLabel)
-//        
-//        animationField = UITextField(frame: CGRectMake(screenSize.width-150, 10, 170, 50))
         animationField.delegate = self
-//        animationField.text = "Pick..."
-//        containerView.addSubview(animationField)
-//        
-//        animationViewController = AnimationViewController()
-//
-//        // set the size of the animation menu
-//        animationViewController.view.frame = CGRectMake(screenSize.width-250, 65, 250, screenSize.height-65)
-//        self.addChildViewController(animationViewController)
-//        
-//        containerView.addSubview(animationViewController.view)
+    }
+    
+    func doAnimation(animation: CAAnimation) {
+        drawView.doAnimation(animation)
     }
     
 
@@ -83,10 +71,7 @@ class ViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDeleg
     {
         animationField.text = animationTypes[row]
         // show a view depending on what animation type user chose
-        if animationField.text == "Rotate" {
-        }
-        else {
-        }
+        animationViewController.changeView(animationField.text)
         animationPicker.hidden = true;
     }
     

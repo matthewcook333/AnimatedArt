@@ -12,6 +12,8 @@
 		2627F9341A1949A6004FECE1 /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2627F9331A1949A6004FECE1 /* sample.jpg */; };
 		265FEDEF1A1C623C004077CA /* RotateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FEDEE1A1C623C004077CA /* RotateView.swift */; };
 		265FEDF31A1C6597004077CA /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FEDF21A1C6597004077CA /* AnimationViewController.swift */; };
+		265FEDF51A1C70C3004077CA /* PathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FEDF41A1C70C3004077CA /* PathView.swift */; };
+		265FEDF71A1C70F6004077CA /* ScaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FEDF61A1C70F6004077CA /* ScaleView.swift */; };
 		269BADE01A0C45CD00590134 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269BADDF1A0C45CD00590134 /* AppDelegate.swift */; };
 		269BADE21A0C45CD00590134 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269BADE11A0C45CD00590134 /* ViewController.swift */; };
 		269BADE51A0C45CD00590134 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 269BADE31A0C45CD00590134 /* Main.storyboard */; };
@@ -38,6 +40,8 @@
 		2627F9331A1949A6004FECE1 /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sample.jpg; path = Images.xcassets/sample.jpg; sourceTree = "<group>"; };
 		265FEDEE1A1C623C004077CA /* RotateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotateView.swift; sourceTree = "<group>"; };
 		265FEDF21A1C6597004077CA /* AnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
+		265FEDF41A1C70C3004077CA /* PathView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PathView.swift; path = ../PathView.swift; sourceTree = "<group>"; };
+		265FEDF61A1C70F6004077CA /* ScaleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScaleView.swift; path = ../ScaleView.swift; sourceTree = "<group>"; };
 		269BADDA1A0C45CD00590134 /* AnimatedArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatedArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		269BADDE1A0C45CD00590134 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		269BADDF1A0C45CD00590134 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 				269BADE81A0C45CD00590134 /* LaunchScreen.xib */,
 				269BADDD1A0C45CD00590134 /* Supporting Files */,
 				265FEDEE1A1C623C004077CA /* RotateView.swift */,
+				265FEDF41A1C70C3004077CA /* PathView.swift */,
+				265FEDF61A1C70F6004077CA /* ScaleView.swift */,
 				265FEDF21A1C6597004077CA /* AnimationViewController.swift */,
 			);
 			path = AnimatedArt;
@@ -238,8 +244,10 @@
 				269BAE041A0C71CD00590134 /* Line.swift in Sources */,
 				265FEDEF1A1C623C004077CA /* RotateView.swift in Sources */,
 				269BADE01A0C45CD00590134 /* AppDelegate.swift in Sources */,
+				265FEDF51A1C70C3004077CA /* PathView.swift in Sources */,
 				269BAE021A0C6C3E00590134 /* DrawView.swift in Sources */,
 				2627F9301A15F6E4004FECE1 /* Animation.swift in Sources */,
+				265FEDF71A1C70F6004077CA /* ScaleView.swift in Sources */,
 				2627F92E1A15F66A004FECE1 /* Animatable.swift in Sources */,
 				265FEDF31A1C6597004077CA /* AnimationViewController.swift in Sources */,
 			);

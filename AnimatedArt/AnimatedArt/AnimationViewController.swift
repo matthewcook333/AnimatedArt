@@ -10,12 +10,28 @@ import UIKit
 
 class AnimationViewController: UIViewController {
     
-    var rotateView: RotateView = RotateView(frame: CGRectMake(0, 0, 50, 50))
+    var pathView: PathView!// =  RotateView(frame: self.view.frame)
+    var scaleView: ScaleView!// =  RotateView(frame: self.view.frame)
 
+    @IBOutlet weak var rotateView: UIView!
+    
     override func viewDidLoad() {
-
-        rotateView.backgroundColor = UIColor.orangeColor()
-        self.view = rotateView
+//        rotateView = RotateView(frame: self.view.frame)
+//        pathView = PathView(frame: self.view.frame)
+//        scaleView = ScaleView(frame: self.view.frame)
+    }
+    
+    func changeView(animationType: String) {
+        switch animationType {
+            case "Rotate":
+                self.view = rotateView
+//            case "Path":
+//                self.view = pathView
+//            case "Scale":
+//                self.view = scaleView
+            default:
+                self.view = UIView()
+        }
     }
     
     override func didReceiveMemoryWarning() {

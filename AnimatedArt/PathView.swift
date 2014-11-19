@@ -1,5 +1,5 @@
 //
-//  RotateView.swift
+//  PathView.swift
 //  AnimatedArt
 //
 //  Created by Matthew Cook on 11/18/14.
@@ -8,12 +8,9 @@
 
 import UIKit
 
-class RotateView: UIView {
+class PathView: UIView {
     
-    @IBOutlet weak var clockwiseButton :UIButton!
-
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
 }

@@ -33,6 +33,10 @@ class DrawView: UIView {
         backgroundColor = UIColor.lightGrayColor()
        
     }
+    
+    func doAnimation(animation: CAAnimation) {
+        
+    }
 
     
     func doneButtonPressed(sender:UIButton!)
