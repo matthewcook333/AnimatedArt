@@ -8,35 +8,62 @@
 
 import UIKit
 
-class ViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate, UITextFieldDelegate
+class ViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDelegate, UITextFieldDelegate
 {
 
+    @IBOutlet var containerView: UIView!
     @IBOutlet weak var drawView: DrawView!
-    @IBOutlet weak var animationMenuView: AnimationMenuView!
+    var animationViewController: AnimationViewController!
+    
+    @IBOutlet weak var createPathButton: UIButton!
+    @IBOutlet weak var rotateClockwiseButton: UIButton!
+    
+
+    @IBOutlet weak var doneButton: UIButton!
+    
+    
+    @IBOutlet weak var animationLabel: UILabel!
+    @IBOutlet weak var animationField: UITextField!
+
+    @IBOutlet var animationPicker: UIPickerView! = UIPickerView()
+    
+    let animationTypes = ["Rotate","Move","Oscillate","Fade","Expand"]
+    let screenSize: CGRect = UIScreen.mainScreen().bounds
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        animationMenuView.rotateClockwiseButton.addTarget(drawView, action: "rotateClockwise:", forControlEvents: UIControlEvents.TouchUpInside)
+        rotateClockwiseButton.addTarget(drawView, action: "rotateClockwise:", forControlEvents: UIControlEvents.TouchUpInside)
         
-        animationMenuView.createPathButton.addTarget(drawView, action: "triggerPathCreation:", forControlEvents: UIControlEvents.TouchUpInside)
+        createPathButton.addTarget(drawView, action: "triggerPathCreation:", forControlEvents: UIControlEvents.TouchUpInside)
         
-        animationMenuView.doneButton.addTarget(drawView, action: "doneButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        doneButton.addTarget(drawView, action: "doneButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
-        pickerBizCat.hidden = true;
-        pickerBizCat.delegate = self
+        animationPicker.hidden = true
+        animationPicker.delegate = self
         
-        textfieldBizCat.text = bizCat[0]
-        textfieldBizCat.delegate = self
+        
+//        animationLabel = UILabel(frame: CGRectMake(screenSize.width-250, 30, 50, 50))
+//        animationLabel.text = "Animation: "
+//        animationLabel.sizeToFit()
+//        containerView.addSubview(animationLabel)
+//        
+//        animationField = UITextField(frame: CGRectMake(screenSize.width-150, 10, 170, 50))
+        animationField.delegate = self
+//        animationField.text = "Pick..."
+//        containerView.addSubview(animationField)
+//        
+//        animationViewController = AnimationViewController()
+//
+//        // set the size of the animation menu
+//        animationViewController.view.frame = CGRectMake(screenSize.width-250, 65, 250, screenSize.height-65)
+//        self.addChildViewController(animationViewController)
+//        
+//        containerView.addSubview(animationViewController.view)
     }
     
-    
-    @IBOutlet var textfieldBizCat: UITextField!
-    @IBOutlet var pickerBizCat: UIPickerView! = UIPickerView()
-    
-    var bizCat = ["Cat One", "Cat Two", "Cat Three"]
-    
+
     
     // returns the number of 'columns' to display.
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int{
@@ -45,24 +72,30 @@ class ViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelega
     
     // returns the # of rows in each component..
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
-        return bizCat.count
+        return animationTypes.count
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return bizCat[row]
+        return animationTypes[row]
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-        textfieldBizCat.text = bizCat[row]
-        pickerBizCat.hidden = true;
+        animationField.text = animationTypes[row]
+        // show a view depending on what animation type user chose
+        if animationField.text == "Rotate" {
+        }
+        else {
+        }
+        animationPicker.hidden = true;
     }
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        pickerBizCat.hidden = false
+        animationPicker.hidden = false
         return false
     }
     
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
