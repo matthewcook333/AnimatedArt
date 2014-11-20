@@ -1,5 +1,5 @@
 //
-//  RotateView.swift
+//  AnimationView.swift
 //  AnimatedArt
 //
 //  Created by Matthew Cook on 11/18/14.
@@ -8,42 +8,50 @@
 
 import UIKit
 
-class RotateView: UIView {
+class AnimationView: UIView {
     
-    var directionButton: UISegmentedControl!
+
+    @IBOutlet weak var directionButton: UISegmentedControl!
     
+    @IBOutlet weak var drawPathButton: UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        directionButton = UISegmentedControl(items: ["None", "CW", "CCW"])
-        directionButton.frame = CGRectMake(10, 30, 180, 30)
-        
-        self.addSubview(directionButton)
+//        directionButton = UISegmentedControl(items: ["None", "CW", "CCW"])
+//        directionButton.frame = CGRectMake(10, 30, 180, 30)
+//
+//        
+//        self.addSubview(directionButton)
+//        
 
-        self.directionButton.addTarget(self, action: "createRotation:", forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        //self.directionButton.addTarget(self, action: "createRotation:", forControlEvents: UIControlEvents.ValueChanged)
+        
+        print("made view")
+        
+        
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetView:", name: "done", object: nil)
         
         backgroundColor = UIColor.orangeColor()
+        
+        
     }
     
     func resetView(notification: NSNotification) {
         directionButton.selectedSegmentIndex = 0
     }
     
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        // not needed, just for reference
-       // NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateNotificationSentLabel", name: mySpecialNotificationKey, object: nil)
-
-    }
     
-    
-    
-    func createRotation(sender: UISegmentedControl!)
+    @IBAction func createRotation(sender: UISegmentedControl!)
     {
+        print("heh")
+        
         if sender.selectedSegmentIndex == 1 {
             let animation:CAAnimation = rotationAnimation(true, speed: 30)
             NSNotificationCenter.defaultCenter().postNotificationName("rotate", object: nil, userInfo: ["animation":animation])
@@ -55,22 +63,8 @@ class RotateView: UIView {
             NSNotificationCenter.defaultCenter().postNotificationName("rotate", object: nil, userInfo: [:])
             
         }
-        
-//        sender.selected = !sender.selected
-//
-//        
-//        
-//        if sender.selected {
-//            let animation:CAAnimation = rotationAnimation(true, speed: 30)
-//            NSNotificationCenter.defaultCenter().postNotificationName("rotate", object: nil, userInfo: ["animation":animation])
-//        } else {
-//            NSNotificationCenter.defaultCenter().postNotificationName("rotate", object: nil, userInfo: [:])
-//
-//        }
-        
-        
     }
-    
+
     var imgAngle: Double = 0;
     func rotationAnimation(clockwise: Bool, speed: Int) -> CAAnimation
     {
@@ -96,6 +90,13 @@ class RotateView: UIView {
         return animation
     }
     
-    
+    @IBAction func triggerPathCreation(sender: UIButton) {
+        sender.selected = !sender.selected;
+        // turn on path creation if selected, otherwise turn off
+        NSNotificationCenter.defaultCenter().postNotificationName("triggerPath", object: nil, userInfo: [:])
 
+    }
+
+    
+    
 }

@@ -35,6 +35,7 @@ class DrawView: UIView {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "triggerRotation:", name: "rotate", object: nil)
        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "triggerPathCreation:", name: "triggerPath", object: nil)
     }
     
     func triggerRotation(notification:NSNotification) {
@@ -51,28 +52,29 @@ class DrawView: UIView {
         }
     }
     
-    func doAnimation(notification:NSNotification) {
-        
-        let userInfo:Dictionary<String,CAAnimation!> = notification.userInfo as Dictionary<String,CAAnimation!>
-        let animation :CAAnimation = userInfo["animation"]!
-        
-        currentAnimatable.layer.addAnimation(animation, forKey: "aniONE")
-    }
-    
     func doneButtonPressed(sender:UIButton!)
     {
         currentAnimatable = Animatable(imageNamed: "sample.jpg")
         self.addSubview(currentAnimatable)
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("done", object: nil, userInfo: [:])
     }
     
-    func triggerPathCreation(sender:UIButton!)
+    func triggerPathCreation(notification:NSNotification)
     {
-        sender.selected = !sender.selected;
-        
-        if sender.selected {
-            tracePath = true
-        } else {
-            tracePath = false
+        tracePath = !tracePath
+        // completed drawing path, animate along path now
+        if !tracePath {
+            var animation: CABasicAnimation = CABasicAnimation(keyPath: "transform.translation")
+            animation.duration = CFTimeInterval(30)
+            animation.autoreverses = true
+            animation.removedOnCompletion = false
+            animation.repeatCount = Float.infinity
+            animation.fillMode = kCAFillModeForwards
+            animation.fromValue = NSValue(CGPoint: waypoints[0].start)
+            animation.toValue = NSValue(CGPoint: waypoints[waypoints.count-1].end)
+            currentAnimatable.layer.addAnimation(animation, forKey: "translation")
+
         }
         
     }

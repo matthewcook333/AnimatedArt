@@ -9,30 +9,31 @@
 import UIKit
 
 class AnimationViewController: UIViewController {
-    
-    var pathView: PathView!
-    var scaleView: ScaleView!
 
-    @IBOutlet weak var rotateView: RotateView!
+
+    @IBOutlet var animationView: AnimationView!
     
     override func viewDidLoad() {
-        
-        rotateView.hidden = true
-
-        rotateView.directionButton.addTarget(rotateView, action: "createRotation:", forControlEvents: UIControlEvents.ValueChanged)
+    
     }
+
     
     func changeView(animationType: String) {
-        switch animationType {
-            case "Rotate":
-                rotateView.hidden = false
-//            case "Path":
-//                self.view = pathView
-//            case "Scale":
-//                self.view = scaleView
-            default:
-                self.view = UIView()
-        }
+
+//        switch animationType {
+//            case "Rotate":
+//                self.view.addSubview(RotateView(frame: self.view.frame))
+////            case "Path":
+////                self.view = pathView
+////            case "Scale":
+////                self.view = scaleView
+//            default:
+//                print("DOING IT")
+//                var thing = UIView()
+//                thing.backgroundColor = UIColor.greenColor()
+//                self.view = thing
+//            //self.view = UIView()
+//        }
     }
     
     override func didReceiveMemoryWarning() {

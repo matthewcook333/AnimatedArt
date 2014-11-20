@@ -19,23 +19,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4OD-sy-FEg" customClass="DrawView" customModule="AnimatedArt" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLs-Xw-x6s">
-                                        <rect key="frame" x="184" y="241" width="106" height="28"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="106" id="Cn4-3F-zGj"/>
-                                            <constraint firstAttribute="height" constant="28" id="nJH-J2-TcL"/>
-                                        </constraints>
-                                        <state key="normal" title="Path">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="fLs-Xw-x6s" firstAttribute="top" secondItem="4OD-sy-FEg" secondAttribute="top" constant="241" id="5yv-d3-rFl"/>
-                                    <constraint firstItem="fLs-Xw-x6s" firstAttribute="leading" secondItem="4OD-sy-FEg" secondAttribute="leading" constant="184" id="8MO-5P-RIS"/>
-                                </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSj-g7-6MA">
                                 <rect key="frame" x="400" y="63" width="200" height="380"/>
@@ -69,13 +53,25 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLs-Xw-x6s">
+                                        <rect key="frame" x="0.0" y="34" width="106" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="106" id="Cn4-3F-zGj"/>
+                                            <constraint firstAttribute="height" constant="28" id="nJH-J2-TcL"/>
+                                        </constraints>
+                                        <state key="normal" title="Path">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.40056918788580631" green="1" blue="0.34011666574539212" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Z6X-pF-uFp" firstAttribute="leading" secondItem="9E3-Az-vjK" secondAttribute="leading" constant="80" id="98j-Vc-Fau"/>
                                     <constraint firstItem="Z6X-pF-uFp" firstAttribute="top" secondItem="9E3-Az-vjK" secondAttribute="top" constant="64" id="9og-uY-EK5"/>
+                                    <constraint firstItem="Z6X-pF-uFp" firstAttribute="top" secondItem="fLs-Xw-x6s" secondAttribute="bottom" constant="2" id="M8y-pz-2KN"/>
                                     <constraint firstItem="Z6X-pF-uFp" firstAttribute="centerY" secondItem="9E3-Az-vjK" secondAttribute="centerY" id="PTh-cg-zB2"/>
                                     <constraint firstItem="Z6X-pF-uFp" firstAttribute="centerX" secondItem="9E3-Az-vjK" secondAttribute="centerX" id="U0f-uz-pth"/>
+                                    <constraint firstAttribute="trailing" secondItem="fLs-Xw-x6s" secondAttribute="trailing" constant="94" id="cjV-iP-zZP"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -123,44 +119,51 @@
                         <viewControllerLayoutGuide type="top" id="Hhk-aY-tQL"/>
                         <viewControllerLayoutGuide type="bottom" id="yvW-oq-mDN"/>
                     </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="OFO-Fe-eNH">
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="OFO-Fe-eNH" customClass="AnimationView" customModule="AnimatedArt" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="380"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KWa-G7-oUR" customClass="RotateView" customModule="AnimatedArt" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="380"/>
-                                <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bWx-aw-2Ub">
-                                        <rect key="frame" x="30" y="61" width="140" height="29"/>
-                                        <segments>
-                                            <segment title="None"/>
-                                            <segment title="CW"/>
-                                            <segment title="CCW"/>
-                                        </segments>
-                                    </segmentedControl>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="0.62012376510561418" blue="0.19641167986160035" alpha="1" colorSpace="calibratedRGB"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fOo-s1-LkN">
+                                <rect key="frame" x="16" y="26" width="140" height="29"/>
+                                <segments>
+                                    <segment title="None"/>
+                                    <segment title="CW"/>
+                                    <segment title="CCW"/>
+                                </segments>
                                 <connections>
-                                    <outlet property="directionButton" destination="bWx-aw-2Ub" id="Rl6-vf-gxh"/>
+                                    <action selector="createRotation:" destination="OFO-Fe-eNH" eventType="valueChanged" id="PAh-yh-okH"/>
                                 </connections>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pick an animation!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsW-93-zxY">
-                                <rect key="frame" x="26" y="164" width="148" height="53"/>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rotation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nn3-gl-thc">
+                                <rect key="frame" x="16" y="0.0" width="65" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zy5-Mk-2Je">
+                                <rect key="frame" x="11" y="73" width="72" height="30"/>
+                                <state key="normal" title="Draw Path">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="triggerPathCreation:" destination="OFO-Fe-eNH" eventType="touchUpInside" id="k11-3z-ITI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="directionButton" destination="fOo-s1-LkN" id="SMh-Cz-Ozb"/>
+                            <outlet property="drawPathButton" destination="Zy5-Mk-2Je" id="5Cb-qZ-rGC"/>
+                        </connections>
                     </view>
                     <toolbarItems/>
                     <connections>
-                        <outlet property="rotateView" destination="KWa-G7-oUR" id="2EP-sf-pVN"/>
+                        <outlet property="animationView" destination="OFO-Fe-eNH" id="9mg-6D-KPW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rq1-Md-sob" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="65" y="-1427"/>
+            <point key="canvasLocation" x="41" y="-1453"/>
         </scene>
     </scenes>
 </document>
