@@ -15,7 +15,7 @@ class ViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDeleg
     @IBOutlet weak var drawView: DrawView!
     var animationViewController: AnimationViewController!
     
-    @IBOutlet weak var createPathButton: UIButton!
+
 
     @IBOutlet weak var doneButton: UIButton!
     
@@ -35,8 +35,6 @@ class ViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDeleg
         animationViewController = AnimationViewController()
         
 //        animationViewController.rotateView.clockwiseButton.addTarget(drawView, action: "rotateClockwise:", forControlEvents: UIControlEvents.TouchUpInside)
-        
-        createPathButton.addTarget(drawView, action: "triggerPathCreation:", forControlEvents: UIControlEvents.TouchUpInside)
         
         doneButton.addTarget(drawView, action: "doneButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         

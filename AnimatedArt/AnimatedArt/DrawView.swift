@@ -20,6 +20,10 @@ class DrawView: UIView {
     // example image to animate
     var currentAnimatable: Animatable!
     
+    
+    // path for animation to follow
+    var animationPath: UIBezierPath = UIBezierPath()
+    
 
     
     required init(coder aDecoder: NSCoder) {
@@ -65,53 +69,77 @@ class DrawView: UIView {
         tracePath = !tracePath
         // completed drawing path, animate along path now
         if !tracePath {
-            var animation: CABasicAnimation = CABasicAnimation(keyPath: "transform.translation")
-            animation.duration = CFTimeInterval(30)
-            animation.autoreverses = true
-            animation.removedOnCompletion = false
+            var animatableLayer: CALayer = CALayer()
+            animatableLayer.bounds = currentAnimatable.bounds
+            animatableLayer.position = animationPath.currentPoint
+            //animatableLayer.contents = currentAnimatable.image?.CGImage
+            animatableLayer.contents = currentAnimatable.layer.contents
+            self.layer.addSublayer(animatableLayer)
+            
+            
+            var animation: CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "position")
+            animation.path = animationPath.CGPath
+            // can change rotation mode
+            animation.rotationMode = kCAAnimationRotateAuto
             animation.repeatCount = Float.infinity
-            animation.fillMode = kCAFillModeForwards
-            animation.fromValue = NSValue(CGPoint: waypoints[0].start)
-            animation.toValue = NSValue(CGPoint: waypoints[waypoints.count-1].end)
-            currentAnimatable.layer.addAnimation(animation, forKey: "translation")
-
+            animation.duration = 10.0
+            animation.autoreverses = true
+            animatableLayer.addAnimation(animation, forKey: "translation")
+            
+            print("triggered path creation")
+            
+            
         }
         
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         if tracePath {
-            lastPoint = touches.anyObject()?.locationInView(self)
-            currentAnimatable.center = lastPoint
+            //lastPoint = touches.anyObject()?.locationInView(self)
+            //currentAnimatable.center = lastPoint
+            
+            animationPath.moveToPoint(touches.anyObject()!.locationInView(self))
         }
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         if tracePath {
             var newPoint = touches.anyObject()!.locationInView(self)
-            waypoints.append(Line(start: lastPoint, end: newPoint, color: drawColor))
-            lastPoint = newPoint
+            //waypoints.append(Line(start: lastPoint, end: newPoint, color: drawColor))
+            //lastPoint = newPoint
         
-            currentAnimatable.center = lastPoint
-        
+            //currentAnimatable.center = lastPoint
+            
+            // new code
+            animationPath.addLineToPoint(newPoint)
+            
+            
             // this will redraw view
             self.setNeedsDisplay()
+            
         }
     }
     
     override func drawRect(rect: CGRect) {
-        var context = UIGraphicsGetCurrentContext()
-        CGContextBeginPath(context)
-        // set width of line
-        CGContextSetLineWidth(context, 5)
-        CGContextSetLineCap(context, kCGLineCapRound)
-        for line in waypoints {
-            CGContextMoveToPoint(context, line.start.x, line.start.y)
-            CGContextAddLineToPoint(context, line.end.x, line.end.y)
-            // set color of line
-            CGContextSetStrokeColorWithColor(context, line.color.CGColor)
-            CGContextStrokePath(context)
-        }
+//        var context = UIGraphicsGetCurrentContext()
+//        CGContextBeginPath(context)
+//        // set width of line
+//        CGContextSetLineWidth(context, 5)
+//        CGContextSetLineCap(context, kCGLineCapRound)
+//        for line in waypoints {
+//            CGContextMoveToPoint(context, line.start.x, line.start.y)
+//            CGContextAddLineToPoint(context, line.end.x, line.end.y)
+//            // set color of line
+//            CGContextSetStrokeColorWithColor(context, line.color.CGColor)
+//            CGContextStrokePath(context)
+//        }
+        
+        var trackPath: CAShapeLayer = CAShapeLayer()
+        trackPath.path = animationPath.CGPath;
+        trackPath.strokeColor = UIColor.blackColor().CGColor
+        trackPath.fillColor = UIColor.clearColor().CGColor
+        trackPath.lineWidth = 10.0;
+        self.layer.addSublayer(trackPath)
     }
     
 //    func rotateClockwise(sender:UIButton!)

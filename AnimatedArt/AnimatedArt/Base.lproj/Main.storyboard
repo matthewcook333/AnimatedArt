@@ -53,25 +53,13 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLs-Xw-x6s">
-                                        <rect key="frame" x="0.0" y="34" width="106" height="28"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="106" id="Cn4-3F-zGj"/>
-                                            <constraint firstAttribute="height" constant="28" id="nJH-J2-TcL"/>
-                                        </constraints>
-                                        <state key="normal" title="Path">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.40056918788580631" green="1" blue="0.34011666574539212" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Z6X-pF-uFp" firstAttribute="leading" secondItem="9E3-Az-vjK" secondAttribute="leading" constant="80" id="98j-Vc-Fau"/>
                                     <constraint firstItem="Z6X-pF-uFp" firstAttribute="top" secondItem="9E3-Az-vjK" secondAttribute="top" constant="64" id="9og-uY-EK5"/>
-                                    <constraint firstItem="Z6X-pF-uFp" firstAttribute="top" secondItem="fLs-Xw-x6s" secondAttribute="bottom" constant="2" id="M8y-pz-2KN"/>
                                     <constraint firstItem="Z6X-pF-uFp" firstAttribute="centerY" secondItem="9E3-Az-vjK" secondAttribute="centerY" id="PTh-cg-zB2"/>
                                     <constraint firstItem="Z6X-pF-uFp" firstAttribute="centerX" secondItem="9E3-Az-vjK" secondAttribute="centerX" id="U0f-uz-pth"/>
-                                    <constraint firstAttribute="trailing" secondItem="fLs-Xw-x6s" secondAttribute="trailing" constant="94" id="cjV-iP-zZP"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -102,7 +90,6 @@
                         <outlet property="animationLabel" destination="D3P-Ce-4UE" id="1pK-Uk-HOy"/>
                         <outlet property="animationPicker" destination="2XL-Az-M5Q" id="P8x-H0-lK3"/>
                         <outlet property="containerView" destination="8bC-Xf-vdC" id="qlv-gZ-nFC"/>
-                        <outlet property="createPathButton" destination="fLs-Xw-x6s" id="wtz-J0-tqG"/>
                         <outlet property="doneButton" destination="Z6X-pF-uFp" id="1mp-Wq-Ue9"/>
                         <outlet property="drawView" destination="4OD-sy-FEg" id="sKq-NS-suJ"/>
                     </connections>

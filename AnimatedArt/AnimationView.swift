@@ -50,8 +50,6 @@ class AnimationView: UIView {
     
     @IBAction func createRotation(sender: UISegmentedControl!)
     {
-        print("heh")
-        
         if sender.selectedSegmentIndex == 1 {
             let animation:CAAnimation = rotationAnimation(true, speed: 30)
             NSNotificationCenter.defaultCenter().postNotificationName("rotate", object: nil, userInfo: ["animation":animation])

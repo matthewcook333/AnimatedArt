@@ -8,11 +8,13 @@
 
 import UIKit
 
-class Animatable: UIImageView {
+class Animatable: CALayer {
     
     init(imageNamed name: String!) {
-        super.init(frame: CGRectMake(100, 150, 150, 150))
-        self.image = UIImage(named: name)
+        super.init()
+        //super.init(frame: CGRectMake(100, 150, 150, 150))
+        self.contents = UIImage(named: name)
+        //self.image = UIImage(named: name)
     }
     
     required init(coder aDecoder: NSCoder) {
