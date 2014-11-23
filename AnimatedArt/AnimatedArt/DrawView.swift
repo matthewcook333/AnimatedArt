@@ -31,7 +31,7 @@ class DrawView: UIView {
         // init code here
         
         currentAnimatable = Animatable(imageNamed: "sample.jpg")
-        self.addSubview(currentAnimatable)
+        self.layer.addSublayer(currentAnimatable)
         
         // temporary background color
         backgroundColor = UIColor.lightGrayColor()
@@ -48,9 +48,9 @@ class DrawView: UIView {
         
         let animation :CAAnimation? = userInfo["animation"]
         
-        currentAnimatable.layer.removeAnimationForKey("rotation")
+        currentAnimatable.removeAnimationForKey("rotation")
         if animation != nil {
-            currentAnimatable.layer.addAnimation(animation, forKey: "rotation")
+            currentAnimatable.addAnimation(animation, forKey: "rotation")
         } else {
             //currentAnimatable.layer.removeAnimationForKey("rotation")
         }
@@ -59,7 +59,7 @@ class DrawView: UIView {
     func doneButtonPressed(sender:UIButton!)
     {
         currentAnimatable = Animatable(imageNamed: "sample.jpg")
-        self.addSubview(currentAnimatable)
+        self.layer.addSublayer(currentAnimatable)
         
         NSNotificationCenter.defaultCenter().postNotificationName("done", object: nil, userInfo: [:])
     }
@@ -69,13 +69,14 @@ class DrawView: UIView {
         tracePath = !tracePath
         // completed drawing path, animate along path now
         if !tracePath {
-            var animatableLayer: CALayer = CALayer()
-            animatableLayer.bounds = currentAnimatable.bounds
-            animatableLayer.position = animationPath.currentPoint
-            //animatableLayer.contents = currentAnimatable.image?.CGImage
-            animatableLayer.contents = currentAnimatable.layer.contents
-            self.layer.addSublayer(animatableLayer)
-            
+            // now we have Animatable as sublayer
+//            var animatableLayer: CALayer = CALayer()
+//            animatableLayer.bounds = currentAnimatable.bounds
+//            animatableLayer.position = animationPath.currentPoint
+//            //animatableLayer.contents = currentAnimatable.image?.CGImage
+//            animatableLayer.contents = currentAnimatable.lcontents
+//            self.layer.addSublayer(animatableLayer)
+        
             
             var animation: CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "position")
             animation.path = animationPath.CGPath
@@ -84,7 +85,9 @@ class DrawView: UIView {
             animation.repeatCount = Float.infinity
             animation.duration = 10.0
             animation.autoreverses = true
-            animatableLayer.addAnimation(animation, forKey: "translation")
+            // allows for constant speed
+            animation.calculationMode = kCAAnimationCubicPaced
+            currentAnimatable.addAnimation(animation, forKey: "translation")
             
             print("triggered path creation")
             

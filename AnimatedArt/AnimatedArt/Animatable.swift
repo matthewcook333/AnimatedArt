@@ -13,7 +13,9 @@ class Animatable: CALayer {
     init(imageNamed name: String!) {
         super.init()
         //super.init(frame: CGRectMake(100, 150, 150, 150))
-        self.contents = UIImage(named: name)
+        self.contents = UIImage(named: name)?.CGImage
+        self.position = CGPoint(x: 100, y: 150)
+        self.bounds = CGRectMake(100, 150, 150, 150)
         //self.image = UIImage(named: name)
     }
     
