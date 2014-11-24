@@ -19,7 +19,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4OD-sy-FEg" customClass="DrawView" customModule="AnimatedArt" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.44399271582916855" green="0.82604582737953947" blue="0.94970518350601196" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSj-g7-6MA">
                                 <rect key="frame" x="400" y="63" width="200" height="380"/>
@@ -54,7 +54,7 @@
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.40056918788580631" green="1" blue="0.34011666574539212" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.33434416118421051" green="0.77168996710526316" blue="0.96934107730263153" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Z6X-pF-uFp" firstAttribute="leading" secondItem="9E3-Az-vjK" secondAttribute="leading" constant="80" id="98j-Vc-Fau"/>
                                     <constraint firstItem="Z6X-pF-uFp" firstAttribute="top" secondItem="9E3-Az-vjK" secondAttribute="top" constant="64" id="9og-uY-EK5"/>
@@ -128,7 +128,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zy5-Mk-2Je">
-                                <rect key="frame" x="11" y="73" width="72" height="30"/>
+                                <rect key="frame" x="50" y="113" width="72" height="30"/>
                                 <state key="normal" title="Draw Path">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -137,7 +137,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.35686274509803922" green="0.792156862745098" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>
                             <outlet property="directionButton" destination="fOo-s1-LkN" id="SMh-Cz-Ozb"/>
                             <outlet property="drawPathButton" destination="Zy5-Mk-2Je" id="5Cb-qZ-rGC"/>

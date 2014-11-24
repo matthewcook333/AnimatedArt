@@ -10,6 +10,8 @@
 		2627F92E1A15F66A004FECE1 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2627F92D1A15F66A004FECE1 /* Animatable.swift */; };
 		2627F9301A15F6E4004FECE1 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2627F92F1A15F6E4004FECE1 /* Animation.swift */; };
 		2627F9341A1949A6004FECE1 /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2627F9331A1949A6004FECE1 /* sample.jpg */; };
+		2641166F1A22E37A006C7E51 /* ben.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2641166D1A22E37A006C7E51 /* ben.jpg */; };
+		264116701A22E37A006C7E51 /* ran.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2641166E1A22E37A006C7E51 /* ran.jpg */; };
 		264777E61A1DAB5800A22682 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264777E51A1DAB5800A22682 /* AnimationView.swift */; };
 		265FEDEF1A1C623C004077CA /* RotateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FEDEE1A1C623C004077CA /* RotateView.swift */; };
 		265FEDF31A1C6597004077CA /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FEDF21A1C6597004077CA /* AnimationViewController.swift */; };
@@ -39,6 +41,8 @@
 		2627F92D1A15F66A004FECE1 /* Animatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
 		2627F92F1A15F6E4004FECE1 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Animation.swift; path = ../Animation.swift; sourceTree = "<group>"; };
 		2627F9331A1949A6004FECE1 /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sample.jpg; path = Images.xcassets/sample.jpg; sourceTree = "<group>"; };
+		2641166D1A22E37A006C7E51 /* ben.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = ben.jpg; path = Images.xcassets/ben.jpg; sourceTree = "<group>"; };
+		2641166E1A22E37A006C7E51 /* ran.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = ran.jpg; path = Images.xcassets/ran.jpg; sourceTree = "<group>"; };
 		264777E51A1DAB5800A22682 /* AnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnimationView.swift; path = ../AnimationView.swift; sourceTree = "<group>"; };
 		265FEDEE1A1C623C004077CA /* RotateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotateView.swift; sourceTree = "<group>"; };
 		265FEDF21A1C6597004077CA /* AnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 				269BAE031A0C71CD00590134 /* Line.swift */,
 				269BADE31A0C45CD00590134 /* Main.storyboard */,
 				269BADE61A0C45CD00590134 /* Images.xcassets */,
+				2641166D1A22E37A006C7E51 /* ben.jpg */,
+				2641166E1A22E37A006C7E51 /* ran.jpg */,
 				2627F9331A1949A6004FECE1 /* sample.jpg */,
 				269BADE81A0C45CD00590134 /* LaunchScreen.xib */,
 				269BADDD1A0C45CD00590134 /* Supporting Files */,
@@ -224,6 +230,8 @@
 			files = (
 				269BADE51A0C45CD00590134 /* Main.storyboard in Resources */,
 				269BADEA1A0C45CD00590134 /* LaunchScreen.xib in Resources */,
+				2641166F1A22E37A006C7E51 /* ben.jpg in Resources */,
+				264116701A22E37A006C7E51 /* ran.jpg in Resources */,
 				269BADE71A0C45CD00590134 /* Images.xcassets in Resources */,
 				2627F9341A1949A6004FECE1 /* sample.jpg in Resources */,
 			);

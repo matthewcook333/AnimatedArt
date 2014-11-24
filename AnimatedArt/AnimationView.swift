@@ -17,34 +17,22 @@ class AnimationView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-//        directionButton = UISegmentedControl(items: ["None", "CW", "CCW"])
-//        directionButton.frame = CGRectMake(10, 30, 180, 30)
-//
-//        
-//        self.addSubview(directionButton)
-//        
-
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        //self.directionButton.addTarget(self, action: "createRotation:", forControlEvents: UIControlEvents.ValueChanged)
-        
-        print("made view")
-        
-        
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetView:", name: "done", object: nil)
-        
-        backgroundColor = UIColor.orangeColor()
-        
         
     }
     
     func resetView(notification: NSNotification) {
         directionButton.selectedSegmentIndex = 0
+        
+        // if user has not unselected button, unselect and animate now
+        if drawPathButton.selected {
+            triggerPathCreation(drawPathButton)
+        }
     }
     
     
