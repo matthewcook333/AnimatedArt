@@ -19,7 +19,8 @@ class AnimationViewController: UIViewController {
 
     
     func changeView(animationType: String) {
-
+//     TODO: Fix to have multiple views. Currently Interface Builder seems to have bugs for 
+//      changing views
 //        switch animationType {
 //            case "Rotate":
 //                self.view.addSubview(RotateView(frame: self.view.frame))
