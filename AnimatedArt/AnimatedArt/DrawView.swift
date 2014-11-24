@@ -73,7 +73,7 @@ class DrawView: UIView {
             // can change rotation mode
             // animation.rotationMode = kCAAnimationRotateAuto
             animation.repeatCount = Float.infinity
-            animation.duration = 1.0
+            animation.duration = 5.0
             animation.autoreverses = true
             // allows for constant speed
             animation.calculationMode = kCAAnimationCubicPaced
