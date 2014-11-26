@@ -1,4 +1,4 @@
-# November 25th Critique: Description and Plan - Paul Dapolito
+# November 25th Critique: Protoype - Paul Dapolito
 
 ## Prototype Feedback
 
