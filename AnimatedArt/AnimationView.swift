@@ -12,8 +12,10 @@ class AnimationView: UIView {
     
 
     @IBOutlet weak var directionButton: UISegmentedControl!
+    @IBOutlet weak var rotationSpeedSlider: UISlider!
     
     @IBOutlet weak var drawPathButton: UIButton!
+    @IBOutlet weak var pathSpeedSlider: UISlider!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,14 +37,20 @@ class AnimationView: UIView {
         }
     }
     
+    @IBAction func changeRotationSpeed(sender: AnyObject) {
+        createRotation(directionButton)
+    }
     
     @IBAction func createRotation(sender: UISegmentedControl!)
     {
+        let rotateSpeed = Int(rotationSpeedSlider.maximumValue - rotationSpeedSlider.value + rotationSpeedSlider.minimumValue)
+        println(rotateSpeed)
+        
         if sender.selectedSegmentIndex == 1 {
-            let animation:CAAnimation = rotationAnimation(true, speed: 30)
+            let animation:CAAnimation = rotationAnimation(true, speed: rotateSpeed)
             NSNotificationCenter.defaultCenter().postNotificationName("rotate", object: nil, userInfo: ["animation":animation])
         } else if sender.selectedSegmentIndex == 2 {
-            let animation:CAAnimation = rotationAnimation(false, speed: 30)
+            let animation:CAAnimation = rotationAnimation(false, speed: rotateSpeed)
             NSNotificationCenter.defaultCenter().postNotificationName("rotate", object: nil, userInfo: ["animation":animation])
         }
         else {
@@ -74,6 +82,10 @@ class AnimationView: UIView {
         }
         
         return animation
+    }
+    
+    @IBAction func triggerPathSpeedChange(sender: UISlider) {
+        
     }
     
     @IBAction func triggerPathCreation(sender: UIButton) {

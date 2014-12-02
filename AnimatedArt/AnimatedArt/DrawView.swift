@@ -39,6 +39,14 @@ class DrawView: UIView {
         let animation :CAAnimation? = userInfo["animation"]
         
         currentAnimatable.removeAnimationForKey("rotation")
+
+// TODO: Make for a smoother speed transition, as right now the animation resets each time
+// This can likely be done by simply updating attributes other than current position
+//        let currentAnimation :CAAnimation? = currentAnimatable.animationForKey("rotation")
+//        if currentAnimation != nil {
+//            currentAnimation.duration =
+//            
+//        }
         if animation != nil {
             currentAnimatable.addAnimation(animation, forKey: "rotation")
         } else {
