@@ -94,6 +94,12 @@ class DrawView: UIView {
         currentAnimatable = Animatable(imageNamed: "ran.jpg")
         self.layer.addSublayer(currentAnimatable)
         
+        // remove path from view
+        for sublayer in self.layer.sublayers {
+            if let path = sublayer as? CAShapeLayer {
+                path.removeFromSuperlayer()
+            }
+        }
         // remove old path
         animationPath = UIBezierPath()
     }
