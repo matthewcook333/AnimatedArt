@@ -1,0 +1,13 @@
+##Critique for December 2: Mauricio
+
+###General Feedback
+After playing around with your DSL for a little bit in class, I felt that the interface was surprisingly simple to use! The only thing is I did need a bit of explanation to get the hang of what I needed to do and what the DSL is capable of at this time, but that makes sense knowing that this isn't a finished project yet. I completely agree with your evaluation that the animations that are implemented are smooth and work as expected, and I wasn't able to break anything while just playing for a few minutes. Given that a tutorial and sample application are difficult to share, I'm wondering how you can communicate to the user what the progression of creating animated objects is, without having to physically tell them. You could offer a simple tutorial that plays when you first open up the application, but I feel that an ideal user interface should be able to speak for itself and communicate what the user should do to create what they'd like. Something like change of color for elements that make sense to press next after an action could point the users in the right direction while requiring relatively little coding effort. 
+
+##Questions from Matt
+###What features would be cool to have as the next iteration prototype?
+
+I think that the one thing I would have liked to see is the duration of animation that was mentioned previously in other critiques. I found drawing the path for the animation to occur to be very easy and nice to work with, but there's no way yet to define anything else. What could be nice is to allow users to have a selection of different path types. One path type could be loop, where the animation occurs the way it is currently set up, and another path is a single run path, where the animation only travels the path once. 
+
+I agree that chaining is a very "nice to have" kind of feature when compared to the other animations. Working on changing speeds and giving users more animations is a fair goal to have. 
+
+I think it'd be good to start thinking more about how users could draw their own image given that you mentioned that it is one of your closer goals you'd like to accomplish by the end of the semester. It looks like you already have a solid understanding on taking user input to make a visual path. Could you use code similar to that to allow users to draw images? How could you store the information about the image drawn by users so that animations that you have defined for the prototype images make sense for user defined images? What are the tools that you want to give users? Will the addition of these different tools add any complications to your implementation of the animations? 
