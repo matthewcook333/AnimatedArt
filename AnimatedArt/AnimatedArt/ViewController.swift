@@ -34,8 +34,6 @@ class ViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDeleg
         
         animationViewController = AnimationViewController()
         
-//        animationViewController.rotateView.clockwiseButton.addTarget(drawView, action: "rotateClockwise:", forControlEvents: UIControlEvents.TouchUpInside)
-        
         doneButton.addTarget(drawView, action: "doneButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
         

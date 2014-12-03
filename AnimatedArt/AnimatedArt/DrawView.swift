@@ -9,27 +9,21 @@
 import UIKit
 
 class DrawView: UIView {
-    
-    var waypoints: [Line] = []
-    var lastPoint: CGPoint!
     // default color
     var drawColor = UIColor.blackColor()
     
     var tracePath: Bool = false
     
-    // example image to animate
+    // current animatable image
     var currentAnimatable: Animatable!
-    
-    
     // path for animation to follow
     var animationPath: UIBezierPath = UIBezierPath()
-    
-
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         // init code here
         
+        // TODO: placeholder image, will remove when user can draw images
         currentAnimatable = Animatable(imageNamed: "ben.jpg")
         self.layer.addSublayer(currentAnimatable)
         
@@ -45,6 +39,14 @@ class DrawView: UIView {
         let animation :CAAnimation? = userInfo["animation"]
         
         currentAnimatable.removeAnimationForKey("rotation")
+
+// TODO: Make for a smoother speed transition, as right now the animation resets each time
+// This can likely be done by simply updating attributes other than current position
+//        let currentAnimation :CAAnimation? = currentAnimatable.animationForKey("rotation")
+//        if currentAnimation != nil {
+//            currentAnimation.duration =
+//            
+//        }
         if animation != nil {
             currentAnimatable.addAnimation(animation, forKey: "rotation")
         } else {
@@ -56,6 +58,7 @@ class DrawView: UIView {
     {
         NSNotificationCenter.defaultCenter().postNotificationName("done", object: nil, userInfo: [:])
         
+        // TODO: placeholder new image
         currentAnimatable = Animatable(imageNamed: "ran.jpg")
         self.layer.addSublayer(currentAnimatable)
         
@@ -70,9 +73,10 @@ class DrawView: UIView {
         if !tracePath {
             var animation: CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "position")
             animation.path = animationPath.CGPath
-            // can change rotation mode
+            // can change rotation mode if necessary
             // animation.rotationMode = kCAAnimationRotateAuto
             animation.repeatCount = Float.infinity
+            // speed of animation. TODO: make adjustable
             animation.duration = 5.0
             animation.autoreverses = true
             // allows for constant speed
@@ -90,17 +94,17 @@ class DrawView: UIView {
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         if tracePath {
+            // add point to path if currently making path
             var newPoint = touches.anyObject()!.locationInView(self)
-            
-            // new code
             animationPath.addLineToPoint(newPoint)
             
-            // this will redraw view
+            // this will call drawRect and redraw view
             self.setNeedsDisplay()
             
         }
     }
     
+    // draws the path on each GUI refresh
     override func drawRect(rect: CGRect) {
         var trackPath: CAShapeLayer = CAShapeLayer()
         trackPath.path = animationPath.CGPath;
