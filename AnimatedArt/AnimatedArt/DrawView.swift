@@ -34,24 +34,56 @@ class DrawView: UIView {
     
     func triggerRotation(notification:NSNotification) {
         
-        let userInfo:Dictionary<String,CAAnimation!> = notification.userInfo as Dictionary<String,CAAnimation!>
+        let userInfo:Dictionary<String, Int!> = notification.userInfo as Dictionary<String, Int!>
         
-        let animation :CAAnimation? = userInfo["animation"]
+        let clockwise :Int! = userInfo["clockwise"]
+        let speed :Int! = userInfo["speed"]
         
-        currentAnimatable.removeAnimationForKey("rotation")
-
-// TODO: Make for a smoother speed transition, as right now the animation resets each time
-// This can likely be done by simply updating attributes other than current position
-//        let currentAnimation :CAAnimation? = currentAnimatable.animationForKey("rotation")
-//        if currentAnimation != nil {
-//            currentAnimation.duration =
-//            
-//        }
-        if animation != nil {
+        let currentAnimation :CAAnimation? = currentAnimatable.animationForKey("rotation")
+        // if there is already rotation, and user changed properties of it
+        if (currentAnimation != nil && clockwise != nil && speed != nil) {
+            var newAnimation :CABasicAnimation = currentAnimation!.copy() as CABasicAnimation
+            newAnimation.duration = CFTimeInterval(speed)
+            // 1 is clockwise on segment bar
+            if clockwise == 1 {
+                newAnimation.toValue = NSNumber(double: (( imgAngle ) / 180.0 * M_PI) + 90)
+            } else {
+                newAnimation.toValue = NSNumber(double: (( imgAngle ) / 180.0 * M_PI) - 90)
+            }
+            currentAnimatable.removeAnimationForKey("rotation")
+            currentAnimatable.addAnimation(newAnimation, forKey: "rotation")
+        // if user added rotation animation
+        } else if (clockwise != nil && speed != nil) {
+            let animation :CAAnimation = rotationAnimation(clockwise, speed: speed)
             currentAnimatable.addAnimation(animation, forKey: "rotation")
+        // if user removed rotation
         } else {
-            //currentAnimatable.layer.removeAnimationForKey("rotation")
+            currentAnimatable.removeAnimationForKey("rotation")
         }
+    }
+    
+    var imgAngle: Double = 0;
+    func rotationAnimation(clockwise: Int, speed: Int) -> CAAnimation
+    {
+        var animation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        animation.duration = CFTimeInterval(speed)
+        animation.additive = true;
+        animation.removedOnCompletion = false;
+        animation.repeatCount = Float.infinity
+        animation.fillMode = kCAFillModeForwards;
+        animation.fromValue = NSNumber(double:( imgAngle ) / 180.0 * M_PI )
+        if clockwise == 1{
+            animation.toValue = NSNumber(double: (( imgAngle ) / 180.0 * M_PI) + 90)
+        } else {
+            animation.toValue = NSNumber(double: (( imgAngle ) / 180.0 * M_PI) - 90)
+        }
+        
+        imgAngle+=90;
+        if (imgAngle>360) {
+            imgAngle = 0;
+        }
+        
+        return animation
     }
     
     func doneButtonPressed(sender:UIButton!)
@@ -68,22 +100,34 @@ class DrawView: UIView {
     
     func triggerPathCreation(notification:NSNotification)
     {
-        tracePath = !tracePath
-        // completed drawing path, animate along path now
-        if !tracePath {
-            var animation: CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "position")
-            animation.path = animationPath.CGPath
-            // can change rotation mode if necessary
-            // animation.rotationMode = kCAAnimationRotateAuto
-            animation.repeatCount = Float.infinity
-            // speed of animation. TODO: make adjustable
-            animation.duration = 5.0
-            animation.autoreverses = true
-            // allows for constant speed
-            animation.calculationMode = kCAAnimationCubicPaced
-            currentAnimatable.addAnimation(animation, forKey: "translation")
+        let userInfo:Dictionary<String, Int!> = notification.userInfo as Dictionary<String, Int!>
+        
+        let speed: Int! = userInfo["speed"]
+        let buttonTrigger: Int? = userInfo["buttonTrigger"]
+        
+        // if draw path button triggered, allow path drawing
+        if buttonTrigger != nil {
+            tracePath = !tracePath
         }
         
+        let currentAnimation: CAAnimation? = currentAnimatable.animationForKey("translation")
+        if (currentAnimation == nil) {
+            var animation: CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "position")
+            animation.path = animationPath.CGPath
+            animation.repeatCount = Float.infinity
+            // speed of animation. TODO: scale with length of path
+            animation.duration = CFTimeInterval(speed)
+            animation.autoreverses = true
+            // allows for constant speed per path segment
+            animation.calculationMode = kCAAnimationCubicPaced
+            currentAnimatable.addAnimation(animation, forKey: "translation")
+        } else {
+            var newAnimation: CAKeyframeAnimation = currentAnimation!.copy() as CAKeyframeAnimation
+            // TODO: Scale with length of path
+            newAnimation.duration = CFTimeInterval(speed)
+            currentAnimatable.removeAnimationForKey("translation")
+            currentAnimatable.addAnimation(newAnimation, forKey: "translation")
+        }
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -100,6 +144,14 @@ class DrawView: UIView {
             
             // this will call drawRect and redraw view
             self.setNeedsDisplay()
+            
+            let currentAnimation: CAAnimation? = currentAnimatable.animationForKey("translation")
+            if currentAnimation != nil {
+                var newAnimation: CAKeyframeAnimation = currentAnimation!.copy() as CAKeyframeAnimation
+                newAnimation.path = animationPath.CGPath
+                currentAnimatable.removeAnimationForKey("translation")
+                currentAnimatable.addAnimation(newAnimation, forKey: "translation")
+            }
             
         }
     }
