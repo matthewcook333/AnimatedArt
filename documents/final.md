@@ -43,10 +43,13 @@ For internal representation, the drawings made by the user are kept track of by 
 
 For execution of the code, that is simply done through the Core Animation Layers, as by adding animation attributes to a layer, the display updates with the animation with each refresh. I tried to structure the semantics of my DSL to most closely match the semantics of Core Animation in Swift (i.e. make adjustable attributes similar to the attributes of Core Animations). I went through a couple iterations of figuring out how to animate correctly, as originally I had the main manipulatable object as a UIImageView, although through implementation realized that was just an extra level of unneeded indirections as I needed CALayers for animation. 
 
-Here is an overall architecture of the system 
+Here is an overall architecture of the system
+
 ***TODO: diagram of overall architecture***
 
 ###Evaluation###
+
+
 
 
 
