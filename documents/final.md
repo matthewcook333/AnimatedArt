@@ -2,7 +2,7 @@
 
 Animations are an important form of visual art, one that allows for a variety of creative outlets.
 The typical way to create animations is through frame-by-frame static images, and stringing them together
-to create a moving picture. The purpose of my Domain-Specific Language is to allow users to easily create
+to create a moving picture. The purpose of my domain-specific language is to allow users to easily create
 simple animations without the need to creating repetitive images. For simple animations, there may only
 be a number of actions the user would need, and so this could be done through simply describing what
 those animations are, rather than drawing out each frame.
@@ -22,3 +22,8 @@ After choosing the animations, the user would see the image immediately animatin
 
 In terms of error handling, the main goal is to disallow for invalid animations and drawings. That is, the user will only be able to draw on the canvas area, and all of the usable animations should interact fine with each other. One of the major errors that could happen is for too many animations occurring on the screen at one time for the hardware to handle. In this case, the app will start slowing down and lagging until crashing, which I think is better as the user should know that it is due to all of the animations they created moving around. If I were to limit the number of animations and images, that would be worst as different hardware can handle different amounts of load and also hardware will simply continue to get better.
 
+There are other DSLs that exist in this domain. The most prominent of which is Adobe Flash, which is one of the go-to applications for animation. My language will be much lighter and specific in scope compared to Flash. The goal of my language is to make it much easier to get started making the animations. Flash is very powerful and has a lot of capabilities, but also has an overwhelming learning curve for a casual user who just wants to make something simple. Beyond static frame-by-frame, Flash actually has similar capabilities to mine to allow for putting an image in location, and then another, and using a "tween" which makes a path to animate between those two. This kind of capability in Flash is a bit of what I am going for with my language. 
+
+There are already some other DSLs such as ActionScript. This is similar to what I am trying to do in regards to having specific animations. One of the main differences is the purpose of the language, as mine is to allow for a creative outlet for drawing and animating them quickly, whereas ActionScript is well-suited for tinkering with a specific animation of an image to make sure to get it right. BannerZest is another one DSL which allows for very cool, involved animations of words and banners. By limiting their domain to certain types of words and banners, they can make more creative animations, but on the other hand the thing they are animating is much more constrained. Another example would be Pyglet, a library for python for animation. This would be more similar to the backend of my language with "Core Animation" in iOS, and so would have similar capabilities, but like Flash, would be harder to learn and easily manipulate new animations.
+
+###Example Programs###
