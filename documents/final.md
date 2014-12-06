@@ -27,3 +27,30 @@ There are other DSLs that exist in this domain. The most prominent of which is A
 There are already some other DSLs such as ActionScript. This is similar to what I am trying to do in regards to having specific animations. One of the main differences is the purpose of the language, as mine is to allow for a creative outlet for drawing and animating them quickly, whereas ActionScript is well-suited for tinkering with a specific animation of an image to make sure to get it right. BannerZest is another one DSL which allows for very cool, involved animations of words and banners. By limiting their domain to certain types of words and banners, they can make more creative animations, but on the other hand the thing they are animating is much more constrained. Another example would be Pyglet, a library for python for animation. This would be more similar to the backend of my language with "Core Animation" in iOS, and so would have similar capabilities, but like Flash, would be harder to learn and easily manipulate new animations.
 
 ###Example Programs###
+
+It is a bit more difficult for me to simply have an already created sample program with an iOS application, so instead I will just have a step-by-step guide for how to make something simple in my language.
+
+***TODO: ADD PICTURES FOR TUTORIAL***
+
+
+###Language Implementation###
+
+The host language for my language is Swift. I chose Swift as the host language as I knew I wanted to develop a touch-based app, which would be more natural to do in Swift/Objective-C or Java. Swift/Objective-C has very robust API for animations simply in the core library through Core Animation, and iOS development is something I am more familiar with. I decide on Swift over Objective-C primarily because I was really interested in learning Swift as a language and the features it offers, as well as Swift having most of the basic libraries I will need for general architecture of the app as well as Core Animation. 
+
+I suppose my language is more of an external DSL since the input is touch-based. The internal representation is then done with the use of CoreAnimation (CA) and the use of CALayers to keep track of them. I chose an external DSL because I wanted the creative process of making these drawn animations interactive, and by defining this through text and strict syntax would go against that goal. The  natural way to do this would necessarily be an "external" DSL, as the input is through a GUI rather than specific syntax of some programming language.
+
+For internal representation, the drawings made by the user are kept track of by a UIBezierCurves as paths. For rendering, the paths are made into UIImages, which are then stored within a CALayer added to the main drawing view. This is continually updated as the user draws, and the view keeps track of one current "Animatable", which is a CALayer. The animations selected are then added to the Animatable with the specified attributes with a given key (some string). These keys are used to modify and remove given animations.
+
+For execution of the code, that is simply done through the Core Animation Layers, as by adding animation attributes to a layer, the display updates with the animation with each refresh. I tried to structure the semantics of my DSL to most closely match the semantics of Core Animation in Swift (i.e. make adjustable attributes similar to the attributes of Core Animations). I went through a couple iterations of figuring out how to animate correctly, as originally I had the main manipulatable object as a UIImageView, although through implementation realized that was just an extra level of unneeded indirections as I needed CALayers for animation. 
+
+Here is an overall architecture of the system 
+***TODO: diagram of overall architecture***
+
+###Evaluation###
+
+
+
+
+
+
+
