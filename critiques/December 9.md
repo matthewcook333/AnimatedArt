@@ -12,7 +12,7 @@ For the program as a whole, I found it relatively easy to use. I wish there was 
 
 In general, I think you've made a ton of progress and have quite a bit to show for it. Good job!
 
-If I have a main concern for your project that you could focus on in the last week, it's that it doesn't currently really feel like a language, as much as an app. I think the things that give me the impression are the following: being unable to edit things after having hit "Done!" (a program in most languages is a work in progress, continuously up for edits, in my experience and resulting expectation), being unable to change or at least delete the current path and start over, and having the type of image decided for you. Many of these things are aspects of this language being incomplete, obviously, but they are what stick out to me.
+If I have a main concern for your project that you could focus on in the last week, it's that it doesn't currently really feel like a language, as much as an app. I think the things that give me the impression are the following: being unable to edit things after having hit "Done!" (a program in most languages is a work in progress, continuously up for edits, in my experience and resulting expectation), being unable to change or at least delete the current path and start over, and having the type of image decided for you. Many of these things are aspects of this language being incomplete, obviously, but they are what stick out to me, and I think changing even one of them will make the project feel more full.
 
 Good luck in your last week!
 
