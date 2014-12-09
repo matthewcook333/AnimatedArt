@@ -26,12 +26,15 @@ class DrawView: UIView {
         
         // TODO: placeholder image, will remove when user can draw images
         //currentAnimatable = Animatable(imageNamed: "ben.jpg")
-        currentAnimatable = Animatable(drawingPath: drawnImage.CGPath)
+        currentAnimatable = Animatable()
         self.layer.addSublayer(currentAnimatable)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "triggerRotation:", name: "rotate", object: nil)
        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "triggerPathCreation:", name: "triggerPath", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "clearPath:", name: "clearPath", object: nil)
+
     }
     
     func triggerRotation(notification:NSNotification) {
@@ -95,17 +98,23 @@ class DrawView: UIView {
         // TODO: placeholder new image
         //currentAnimatable = Animatable(imageNamed: "ran.jpg")
         drawnImage = UIBezierPath()
-        currentAnimatable = Animatable(drawingPath: drawnImage.CGPath)
+        currentAnimatable = Animatable()
         self.layer.addSublayer(currentAnimatable)
         
         // remove path from view
-//        for sublayer in self.layer.sublayers {
-//            if let path = sublayer as? CAShapeLayer {
-//                path.removeFromSuperlayer()
-//            }
-//        }
+        removeTranslationPaths()
         // remove old path
         animationPath = UIBezierPath()
+    }
+    
+    func removeTranslationPaths() {
+        for sublayer in self.layer.sublayers {
+            if let path = sublayer as? Animatable {
+                // do nothing as we want to keep animatables
+            } else if let path = sublayer as? CAShapeLayer {
+                path.removeFromSuperlayer()
+            }
+        }
     }
     
     func triggerPathCreation(notification:NSNotification)
@@ -140,12 +149,22 @@ class DrawView: UIView {
         }
     }
     
+    func clearPath(notification:NSNotification)
+    {
+        animationPath = UIBezierPath()
+        removeTranslationPaths()
+        // TODO: Fix so that path begins animating if user starts drawing a new one. Currently
+        //  it does not as touchesBegan does not trigger animation. May need to do some refactoring
+        //  to get this to work cleanly
+        currentAnimatable.removeAnimationForKey("translation")
+        
+    }
+    
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         if tracePath {
             animationPath.moveToPoint(touches.anyObject()!.locationInView(self))
         } else {
             drawnImage.moveToPoint(touches.anyObject()!.locationInView(self))
-            currentAnimatable.path = drawnImage.CGPath
         }
     }
     
@@ -165,7 +184,6 @@ class DrawView: UIView {
         } else {
             // add point to image if drawing
             drawnImage.addLineToPoint(newPoint)
-            currentAnimatable.path = drawnImage.CGPath
         }
         // this will call drawRect and redraw view
         self.setNeedsDisplay()
@@ -180,39 +198,15 @@ class DrawView: UIView {
         trackPath.lineWidth = 2.0;
         trackPath.lineDashPattern = [6, 2]
         self.layer.addSublayer(trackPath)
-        
-        
-        UIGraphicsBeginImageContext(self.bounds.size)
-        
-        var screenImageContext: CGContextRef = UIGraphicsGetCurrentContext(); //get a reference to the context we just made above
-        println(" \(screenImageContext)");
-        
-        self.layer.renderInContext(screenImageContext)
-        
-        UIColor.redColor().setStroke()
-        drawnImage.lineWidth = 2;
-        drawnImage.stroke()
-        
-        
-        
-//        var imagePath: CAShapeLayer = CAShapeLayer()
-//        imagePath.path = drawnImage.CGPath;
-//        imagePath.strokeColor = UIColor.redColor().CGColor
-//        imagePath.fillColor = UIColor.blueColor().CGColor
-//        imagePath.lineWidth = 2.0;
-        //self.layer.addSublayer(imagePath)
-        
-        var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        //self.addSubview(UIImageView(image: image))
+    
+        currentAnimatable.path = drawnImage.CGPath
 
-        currentAnimatable = Animatable(image: UIImageView(image: image))
-        self.layer.addSublayer(currentAnimatable)
+        // centers the drawing
+        let bounds = CGPathGetBoundingBox(currentAnimatable.path)
+        let rotationPoint = CGPoint(x:CGRectGetMidX(bounds), y:CGRectGetMidY(bounds))
+        currentAnimatable.position = rotationPoint
+        currentAnimatable.bounds = bounds
         
-        //currentAnimatable.contents = image.CGImage
-        //println("\(currentAnimatable.contents)")
-        //currentAnimatable.setNeedsDisplay()
 
     }
 }

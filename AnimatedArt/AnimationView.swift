@@ -16,6 +16,7 @@ class AnimationView: UIView {
     
     @IBOutlet weak var drawPathButton: UIButton!
     @IBOutlet weak var pathSpeedSlider: UISlider!
+    @IBOutlet weak var clearPathButton: UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,12 +62,16 @@ class AnimationView: UIView {
     @IBAction func triggerPathCreation(sender: UIButton) {
         let pathSpeed = Int(pathSpeedSlider.maximumValue - pathSpeedSlider.value + pathSpeedSlider.minimumValue)
         
-        sender.selected = !sender.selected;
         // turn on path creation if selected, otherwise turn off
+        sender.selected = !sender.selected;
+        
         NSNotificationCenter.defaultCenter().postNotificationName("triggerPath", object: nil, userInfo: ["speed":pathSpeed, "buttonTrigger":1])
 
     }
 
     
+    @IBAction func clearPath(sender: AnyObject) {
+        NSNotificationCenter.defaultCenter().postNotificationName("clearPath", object: nil, userInfo: [:])
+    }
     
 }
