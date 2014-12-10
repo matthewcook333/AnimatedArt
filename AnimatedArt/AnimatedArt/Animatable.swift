@@ -10,18 +10,22 @@ import UIKit
 
 class Animatable: CAShapeLayer {
     
+    var drawnImage = Dictionary<UIBezierPath, (UIColor)>()
+    
     override init!() {
         super.init()
-        self.strokeColor = UIColor.redColor().CGColor
+        self.path = CGPathCreateMutable()
+        //self.strokeColor = UIColor.redColor().CGColor
         self.fillColor = UIColor.clearColor().CGColor
-        self.lineWidth = 2.0;
+        //UIColor.clearColor().setFill()
+//        self.lineWidth = 2.0;
     }
     
     override init(layer: AnyObject!) {
         super.init(layer: layer)
-        self.strokeColor = UIColor.redColor().CGColor
-        self.fillColor = UIColor.clearColor().CGColor
-        self.lineWidth = 2.0;
+//        self.strokeColor = UIColor.redColor().CGColor
+//        self.fillColor = UIColor.clearColor().CGColor
+//        self.lineWidth = 2.0;
     }
     
 
@@ -48,5 +52,34 @@ class Animatable: CAShapeLayer {
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func display() {
+        //super.display()
+
+        var combinedPath :CGMutablePathRef = CGPathCreateMutableCopy(path);
+        for (path, (color)) in drawnImage {
+            var sublayer = CAShapeLayer()
+            sublayer.strokeColor = color.CGColor
+            sublayer.fillColor = UIColor.clearColor().CGColor
+            sublayer.path = path.CGPath
+            self.addSublayer(sublayer)
+            CGPathAddPath(combinedPath, nil, path.CGPath);
+        }
+        self.path = combinedPath
+        //UIGraphicsEndImageContext()
+        //CGPathAddPath(combinedPath, nil, drawnImage.CGPath);
+        //path = combinedPath;
+    }
+    
+//    override func drawLayer(layer: CALayer!, inContext ctx: CGContext!) {
+//        super.drawLayer(layer, inContext: ctx)
+//        CGContextSetFillColorWithColor(ctx, UIColor.clearColor().CGColor)
+//        for (path, (color)) in drawnImage {
+//            CGContextSetStrokeColorWithColor(ctx, color.CGColor)
+//            CGContextAddPath(ctx, path.CGPath)
+//            CGContextStrokePath(ctx)
+//        }
+//        
+//    }
 
 }

@@ -16,7 +16,8 @@ class DrawView: UIView {
     
     // current animatable image
     var currentAnimatable: Animatable!
-    var drawnImage: UIBezierPath = UIBezierPath()
+    var currentDrawSegment = UIBezierPath()
+    
     // path for animation to follow
     var animationPath: UIBezierPath = UIBezierPath()
     
@@ -97,7 +98,7 @@ class DrawView: UIView {
         
         // TODO: placeholder new image
         //currentAnimatable = Animatable(imageNamed: "ran.jpg")
-        drawnImage = UIBezierPath()
+        //drawnImage.removeAll(keepCapacity: false)
         currentAnimatable = Animatable()
         self.layer.addSublayer(currentAnimatable)
         
@@ -164,7 +165,7 @@ class DrawView: UIView {
         if tracePath {
             animationPath.moveToPoint(touches.anyObject()!.locationInView(self))
         } else {
-            drawnImage.moveToPoint(touches.anyObject()!.locationInView(self))
+            currentDrawSegment.moveToPoint(touches.anyObject()!.locationInView(self))
         }
     }
     
@@ -183,9 +184,18 @@ class DrawView: UIView {
             }
         } else {
             // add point to image if drawing
-            drawnImage.addLineToPoint(newPoint)
+            currentAnimatable.drawnImage.removeValueForKey(currentDrawSegment)
+            currentDrawSegment.addLineToPoint(newPoint)
+            currentAnimatable.drawnImage.updateValue((color: drawColor), forKey: currentDrawSegment)
         }
         // this will call drawRect and redraw view
+        self.setNeedsDisplay()
+    }
+    
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        currentAnimatable.drawnImage.updateValue((color: drawColor), forKey: currentDrawSegment)
+        currentDrawSegment = UIBezierPath()
+        
         self.setNeedsDisplay()
     }
     
@@ -199,7 +209,13 @@ class DrawView: UIView {
         trackPath.lineDashPattern = [6, 2]
         self.layer.addSublayer(trackPath)
     
-        currentAnimatable.path = drawnImage.CGPath
+        
+        //drawnImage.stroke()
+        
+        currentAnimatable.setNeedsDisplay()
+    
+        //currentAnimatable.path = drawnImage.CGPath
+        
 
         // centers the drawing
         let bounds = CGPathGetBoundingBox(currentAnimatable.path)
