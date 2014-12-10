@@ -23,7 +23,6 @@ class ViewController: UIViewController
     let animationTypes = ["Rotate","Path","Oscillate","Fade","Scale"]
     let screenSize: CGRect = UIScreen.mainScreen().bounds
     
-    @IBOutlet weak var colorNumberLabel: UILabel!
     @IBOutlet weak var colorButton: UIButton!
     
     var colorArray: [UIButton] = []
@@ -80,9 +79,9 @@ class ViewController: UIViewController
         let color = sender.backgroundColor!
         if color.getHue(&h, saturation: &s, brightness: &l, alpha: &a){
             if color.getRed(&r, green: &g, blue: &b, alpha: &a){
-                let colorText = NSString(format: "HSB: %4.2f,%4.2f,%4.2f RGB: %4.2f,%4.2f,%4.2f",
-                    Float(h),Float(s),Float(b),Float(r),Float(g),Float(b))
-                colorNumberLabel.text = colorText
+                // use for debugging purposes of rgb color values
+                //let colorText = NSString(format: "HSB: %4.2f,%4.2f,%4.2f RGB: %4.2f,%4.2f,%4.2f",
+                //    Float(h),Float(s),Float(b),Float(r),Float(g),Float(b))
                 drawView.drawColor = color
             }
         }

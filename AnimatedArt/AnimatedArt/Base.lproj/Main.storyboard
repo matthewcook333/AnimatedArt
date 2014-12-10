@@ -18,12 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4OD-sy-FEg" customClass="DrawView" customModule="AnimatedArt" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hSj-g7-6MA">
-                                <rect key="frame" x="400" y="63" width="200" height="380"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSj-g7-6MA">
+                                <rect key="frame" x="400" y="0.0" width="200" height="443"/>
                                 <connections>
                                     <segue destination="CRM-yb-5Ud" kind="embed" id="Aip-s1-QoR"/>
                                 </connections>
@@ -40,20 +36,14 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="Z6X-pF-uFp" firstAttribute="leading" secondItem="9E3-Az-vjK" secondAttribute="leading" constant="80" id="98j-Vc-Fau"/>
-                                    <constraint firstItem="Z6X-pF-uFp" firstAttribute="top" secondItem="9E3-Az-vjK" secondAttribute="top" constant="64" id="9og-uY-EK5"/>
-                                    <constraint firstItem="Z6X-pF-uFp" firstAttribute="centerY" secondItem="9E3-Az-vjK" secondAttribute="centerY" id="PTh-cg-zB2"/>
-                                    <constraint firstItem="Z6X-pF-uFp" firstAttribute="centerX" secondItem="9E3-Az-vjK" secondAttribute="centerX" id="U0f-uz-pth"/>
+                                    <constraint firstItem="Z6X-pF-uFp" firstAttribute="top" secondItem="9E3-Az-vjK" secondAttribute="top" constant="64" id="1Cu-7O-Aml"/>
+                                    <constraint firstItem="Z6X-pF-uFp" firstAttribute="centerY" secondItem="9E3-Az-vjK" secondAttribute="centerY" id="Ld8-X9-24B"/>
+                                    <constraint firstItem="Z6X-pF-uFp" firstAttribute="leading" secondItem="9E3-Az-vjK" secondAttribute="leading" constant="80" id="USB-Ev-dlF"/>
+                                    <constraint firstItem="Z6X-pF-uFp" firstAttribute="centerX" secondItem="9E3-Az-vjK" secondAttribute="centerX" id="Zwj-e2-wgk"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xu5-fy-ynO">
-                                <rect key="frame" x="477" y="242" width="118" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugV-ca-bqe">
-                                <rect key="frame" x="412" y="20" width="176" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugV-ca-bqe">
+                                <rect key="frame" x="450" y="20" width="100" height="30"/>
                                 <state key="normal" title="Choose Color">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -61,23 +51,30 @@
                                     <action selector="showColorPicker:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jF1-pU-xaE"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4OD-sy-FEg" customClass="DrawView" customModule="AnimatedArt" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="9E3-Az-vjK" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Pf5-hR-9c2"/>
-                            <constraint firstItem="4OD-sy-FEg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="VLD-U9-uy8"/>
-                            <constraint firstItem="hSj-g7-6MA" firstAttribute="trailing" secondItem="9E3-Az-vjK" secondAttribute="trailing" id="aZw-Ok-xtn"/>
-                            <constraint firstItem="4OD-sy-FEg" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="bZp-xk-N7I"/>
-                            <constraint firstItem="9E3-Az-vjK" firstAttribute="leading" secondItem="4OD-sy-FEg" secondAttribute="trailing" id="eeu-vb-2PS"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hSj-g7-6MA" secondAttribute="bottom" constant="157" id="eiG-GC-rQ7"/>
-                            <constraint firstAttribute="trailing" secondItem="9E3-Az-vjK" secondAttribute="trailing" id="lgR-h4-GkP"/>
-                            <constraint firstItem="hSj-g7-6MA" firstAttribute="leading" secondItem="9E3-Az-vjK" secondAttribute="leading" id="tk0-IT-IKd"/>
-                            <constraint firstItem="4OD-sy-FEg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="w83-yg-mhF"/>
+                            <constraint firstItem="ugV-ca-bqe" firstAttribute="leading" secondItem="4OD-sy-FEg" secondAttribute="trailing" constant="50" id="5yv-dx-4iR"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hSj-g7-6MA" secondAttribute="bottom" constant="157" id="94P-PX-yss"/>
+                            <constraint firstItem="hSj-g7-6MA" firstAttribute="top" secondItem="ugV-ca-bqe" secondAttribute="bottom" constant="-50" id="AZZ-36-hOa"/>
+                            <constraint firstItem="9E3-Az-vjK" firstAttribute="trailing" secondItem="hSj-g7-6MA" secondAttribute="trailing" id="BU4-df-vCu"/>
+                            <constraint firstItem="9E3-Az-vjK" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="BaO-dn-LoI"/>
+                            <constraint firstItem="4OD-sy-FEg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Gs1-xj-7QP"/>
+                            <constraint firstAttribute="trailing" secondItem="hSj-g7-6MA" secondAttribute="trailing" id="JdL-Xj-Vl5"/>
+                            <constraint firstItem="hSj-g7-6MA" firstAttribute="leading" secondItem="4OD-sy-FEg" secondAttribute="trailing" id="K7m-qh-UtP"/>
+                            <constraint firstItem="ugV-ca-bqe" firstAttribute="centerX" secondItem="hSj-g7-6MA" secondAttribute="centerX" id="LKj-wl-DNf"/>
+                            <constraint firstItem="4OD-sy-FEg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Oci-LY-ubQ"/>
+                            <constraint firstItem="4OD-sy-FEg" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="T5Y-ci-aOs"/>
+                            <constraint firstItem="ugV-ca-bqe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ZAf-ES-UyI"/>
+                            <constraint firstItem="9E3-Az-vjK" firstAttribute="leading" secondItem="hSj-g7-6MA" secondAttribute="leading" id="v7g-h9-LsT"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="colorButton" destination="ugV-ca-bqe" id="Rzo-8L-8Rn"/>
-                        <outlet property="colorNumberLabel" destination="xu5-fy-ynO" id="dCj-aK-sVi"/>
                         <outlet property="containerView" destination="8bC-Xf-vdC" id="qlv-gZ-nFC"/>
                         <outlet property="doneButton" destination="Z6X-pF-uFp" id="1mp-Wq-Ue9"/>
                         <outlet property="drawView" destination="4OD-sy-FEg" id="sKq-NS-suJ"/>
@@ -96,11 +93,11 @@
                         <viewControllerLayoutGuide type="bottom" id="yvW-oq-mDN"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="OFO-Fe-eNH" customClass="AnimationView" customModule="AnimatedArt" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="380"/>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="443"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fOo-s1-LkN">
-                                <rect key="frame" x="0.0" y="196" width="140" height="29"/>
+                                <rect key="frame" x="0.0" y="259" width="140" height="29"/>
                                 <segments>
                                     <segment title="None"/>
                                     <segment title="CW"/>
@@ -111,19 +108,19 @@
                                 </connections>
                             </segmentedControl>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="60" minValue="20" maxValue="140" translatesAutoresizingMaskIntoConstraints="NO" id="hLQ-QW-i1X">
-                                <rect key="frame" x="63" y="232" width="118" height="31"/>
+                                <rect key="frame" x="63" y="295" width="118" height="31"/>
                                 <connections>
                                     <action selector="changeRotationSpeed:" destination="OFO-Fe-eNH" eventType="valueChanged" id="Qbk-gG-VIM"/>
                                 </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="0.0" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="vip-7j-hSy">
-                                <rect key="frame" x="63" y="323" width="118" height="58"/>
+                                <rect key="frame" x="63" y="386" width="118" height="58"/>
                                 <connections>
                                     <action selector="triggerPathSpeedChange:" destination="OFO-Fe-eNH" eventType="valueChanged" id="gUi-hV-z5Z"/>
                                 </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlw-2m-NVS">
-                                <rect key="frame" x="91" y="306" width="72" height="30"/>
+                                <rect key="frame" x="91" y="369" width="72" height="30"/>
                                 <state key="normal" title="Clear Path">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -132,19 +129,19 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBj-Rr-5FY">
-                                <rect key="frame" x="7" y="341" width="50" height="19"/>
+                                <rect key="frame" x="7" y="404" width="50" height="19"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QF9-XV-iBu">
-                                <rect key="frame" x="0.0" y="232" width="50" height="21"/>
+                                <rect key="frame" x="0.0" y="295" width="50" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rotation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nn3-gl-thc">
-                                <rect key="frame" x="0.0" y="167" width="65" height="21"/>
+                                <rect key="frame" x="0.0" y="230" width="65" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="lLM-XI-A6x"/>
                                 </constraints>
@@ -153,13 +150,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Translation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVh-qa-wwv">
-                                <rect key="frame" x="0.0" y="290" width="83" height="13"/>
+                                <rect key="frame" x="0.0" y="353" width="83" height="13"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zy5-Mk-2Je">
-                                <rect key="frame" x="5" y="306" width="72" height="30"/>
+                                <rect key="frame" x="5" y="369" width="72" height="30"/>
                                 <state key="normal" title="Draw Path">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>

@@ -18,7 +18,6 @@ class Animatable: CAShapeLayer {
         //self.strokeColor = UIColor.redColor().CGColor
         self.fillColor = UIColor.clearColor().CGColor
         //UIColor.clearColor().setFill()
-//        self.lineWidth = 2.0;
     }
     
     override init(layer: AnyObject!) {
@@ -61,6 +60,8 @@ class Animatable: CAShapeLayer {
             var sublayer = CAShapeLayer()
             sublayer.strokeColor = color.CGColor
             sublayer.fillColor = UIColor.clearColor().CGColor
+            sublayer.lineWidth = 2.0
+            sublayer.lineCap = kCALineCapRound
             sublayer.path = path.CGPath
             self.addSublayer(sublayer)
             CGPathAddPath(combinedPath, nil, path.CGPath);
