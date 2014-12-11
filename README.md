@@ -1,4 +1,4 @@
-# project
+# AnimatedArt
 
 
 Instructions for running the project:
