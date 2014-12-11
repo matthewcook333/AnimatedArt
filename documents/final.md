@@ -30,7 +30,17 @@ There are already some other DSLs such as ActionScript. This is similar to what 
 
 It is a bit more difficult for me to simply have an already created sample program with an iOS application, so instead I will just have a step-by-step guide for how to make something simple in my language.
 
-***TODO: ADD PICTURES FOR TUTORIAL***
+1. Draw on the canvas (using colors of your choosing)
+
+![alt text](https://github.com/matthewcook333/AnimatedArt/blob/master/screenshots/step2.png "Step 1")
+
+2. Choose animations from menu on right side
+
+![alt text](https://github.com/matthewcook333/AnimatedArt/blob/master/screenshots/step3.png "Step 2")
+
+3. Press "Done!" on the bottom right and draw more!
+
+![alt text](https://github.com/matthewcook333/AnimatedArt/blob/master/screenshots/step5.png "Step 3")
 
 
 ###Language Implementation###
