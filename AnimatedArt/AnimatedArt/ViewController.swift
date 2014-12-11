@@ -17,23 +17,13 @@ class ViewController: UIViewController
     
     @IBOutlet weak var doneButton: UIButton!
     
-
-    @IBOutlet var animationPicker: UIPickerView! = UIPickerView()
-    
-    let animationTypes = ["Rotate","Path","Oscillate","Fade","Scale"]
-    let screenSize: CGRect = UIScreen.mainScreen().bounds
-    
     @IBOutlet weak var colorButton: UIButton!
     
     var colorArray: [UIButton] = []
 
-    
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
         animationViewController = AnimationViewController()
         
         doneButton.addTarget(drawView, action: "doneButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -48,12 +38,14 @@ class ViewController: UIViewController
         }
     }
     
+    // display the color choices
     @IBAction func showColorPicker(sender: AnyObject) {
         for button in colorArray {
             button.hidden = false
         }
     }
     
+    // create button array for choosing colors
     func makeRainbowButtons(buttonFrame:CGRect, sat:CGFloat, bright:CGFloat){
         var myButtonFrame = buttonFrame
         //populate an array of buttons
@@ -72,6 +64,7 @@ class ViewController: UIViewController
         }
     }
     
+    // set the color for drawing
     func displayColor(sender:UIButton){
         var r:CGFloat = 0,g:CGFloat = 0,b:CGFloat = 0
         var a:CGFloat = 0
@@ -85,7 +78,6 @@ class ViewController: UIViewController
                 drawView.drawColor = color
             }
         }
-        
         colorButton.setTitleColor(color, forState: UIControlState.Normal)
         // hide buttons after selection
         for button in colorArray {

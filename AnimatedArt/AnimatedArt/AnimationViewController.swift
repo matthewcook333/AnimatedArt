@@ -14,28 +14,9 @@ class AnimationViewController: UIViewController {
     @IBOutlet var animationView: AnimationView!
     
     override func viewDidLoad() {
-    
+        super.viewDidLoad()
     }
 
-    
-    func changeView(animationType: String) {
-//     TODO: Fix to have multiple views. Currently Interface Builder seems to have bugs for 
-//      changing views
-//        switch animationType {
-//            case "Rotate":
-//                self.view.addSubview(RotateView(frame: self.view.frame))
-////            case "Path":
-////                self.view = pathView
-////            case "Scale":
-////                self.view = scaleView
-//            default:
-//                print("DOING IT")
-//                var thing = UIView()
-//                thing.backgroundColor = UIColor.greenColor()
-//                self.view = thing
-//            //self.view = UIView()
-//        }
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

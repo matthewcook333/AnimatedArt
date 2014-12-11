@@ -22,6 +22,7 @@ class AnimationView: UIView {
         super.init(frame: frame)
     }
     
+    // subscribe to listener for when current Animatable is done
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         

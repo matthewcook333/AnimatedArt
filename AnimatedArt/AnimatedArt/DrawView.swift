@@ -23,13 +23,10 @@ class DrawView: UIView {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        // init code here
-        
-        // TODO: placeholder image, will remove when user can draw images
-        //currentAnimatable = Animatable(imageNamed: "ben.jpg")
         currentAnimatable = Animatable()
         self.layer.addSublayer(currentAnimatable)
         
+        // subscribe to notifications from animation view
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "triggerRotation:", name: "rotate", object: nil)
        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "triggerPathCreation:", name: "triggerPath", object: nil)
@@ -38,6 +35,7 @@ class DrawView: UIView {
 
     }
     
+    // event handler for rotation
     func triggerRotation(notification:NSNotification) {
         
         let userInfo:Dictionary<String, Int!> = notification.userInfo as Dictionary<String, Int!>
@@ -68,6 +66,7 @@ class DrawView: UIView {
         }
     }
     
+    // method for creating rotation animation
     var imgAngle: Double = 0;
     func rotationAnimation(clockwise: Int, speed: Int) -> CAAnimation
     {
@@ -92,13 +91,12 @@ class DrawView: UIView {
         return animation
     }
     
+    // event handler for pressing done
     func doneButtonPressed(sender:UIButton!)
     {
+        // tell animation view to reset
         NSNotificationCenter.defaultCenter().postNotificationName("done", object: nil, userInfo: [:])
         
-        // TODO: placeholder new image
-        //currentAnimatable = Animatable(imageNamed: "ran.jpg")
-        //drawnImage.removeAll(keepCapacity: false)
         currentAnimatable = Animatable()
         self.layer.addSublayer(currentAnimatable)
         
@@ -108,6 +106,7 @@ class DrawView: UIView {
         animationPath = UIBezierPath()
     }
     
+    // method to remove all translation paths
     func removeTranslationPaths() {
         for sublayer in self.layer.sublayers {
             if let path = sublayer as? Animatable {
@@ -118,6 +117,7 @@ class DrawView: UIView {
         }
     }
     
+    // event handler for making a path
     func triggerPathCreation(notification:NSNotification)
     {
         let userInfo:Dictionary<String, Int!> = notification.userInfo as Dictionary<String, Int!>
@@ -150,6 +150,7 @@ class DrawView: UIView {
         }
     }
     
+    // event handler to clear the drawn path
     func clearPath(notification:NSNotification)
     {
         animationPath = UIBezierPath()
@@ -158,7 +159,6 @@ class DrawView: UIView {
         //  it does not as touchesBegan does not trigger animation. May need to do some refactoring
         //  to get this to work cleanly
         currentAnimatable.removeAnimationForKey("translation")
-        
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -174,7 +174,7 @@ class DrawView: UIView {
         if tracePath {
             // add point to dotted path if making animation
             animationPath.addLineToPoint(newPoint)
-            
+            // make animatable start moving if path exists
             let currentAnimation: CAAnimation? = currentAnimatable.animationForKey("translation")
             if currentAnimation != nil {
                 var newAnimation: CAKeyframeAnimation = currentAnimation!.copy() as CAKeyframeAnimation
@@ -193,6 +193,7 @@ class DrawView: UIView {
     }
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        // end current segment as next stroke the color may change
         currentAnimatable.drawnImage.updateValue((color: drawColor), forKey: currentDrawSegment)
         currentDrawSegment = UIBezierPath()
         
@@ -201,6 +202,7 @@ class DrawView: UIView {
     
     // draws the path on each GUI refresh
     override func drawRect(rect: CGRect) {
+        // draw path for translation
         var trackPath: CAShapeLayer = CAShapeLayer()
         trackPath.path = animationPath.CGPath;
         trackPath.strokeColor = UIColor.blackColor().CGColor
@@ -209,13 +211,7 @@ class DrawView: UIView {
         trackPath.lineDashPattern = [6, 2]
         self.layer.addSublayer(trackPath)
     
-        
-        //drawnImage.stroke()
-        
         currentAnimatable.setNeedsDisplay()
-    
-        //currentAnimatable.path = drawnImage.CGPath
-        
 
         // centers the drawing
         let bounds = CGPathGetBoundingBox(currentAnimatable.path)
