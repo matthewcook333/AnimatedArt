@@ -11,6 +11,7 @@ Instructions for running the project:
 
 
 Instructions for creating something in the language:
+
 1. Draw on the canvas (using colors of your choosing)
 2. Choose animations from side menu
 3. Press "Done!" when given drawing is done and draw more!
