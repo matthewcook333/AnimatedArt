@@ -43,11 +43,32 @@ For internal representation, the drawings made by the user are kept track of by 
 
 For execution of the code, that is simply done through the Core Animation Layers, as by adding animation attributes to a layer, the display updates with the animation with each refresh. I tried to structure the semantics of my DSL to most closely match the semantics of Core Animation in Swift (i.e. make adjustable attributes similar to the attributes of Core Animations). I went through a couple iterations of figuring out how to animate correctly, as originally I had the main manipulatable object as a UIImageView, although through implementation realized that was just an extra level of unneeded indirections as I needed CALayers for animation. 
 
-Here is an overall architecture of the system
+Here is the high level architecture of the system
 
-***TODO: diagram of overall architecture***
+Main View Controller - controls drawing tools, Animation View Controller, and Draw View
+
+Animation View Controller - Controls the Animation View
+
+Animation View - UI for the animation control elements
+
+Draw View - Contains animated Animatables
+
+Animatable - CAShapeLayer holding all of the sublayers for each drawing stroke and animation attributes
 
 ###Evaluation###
+
+
+Overall, I am pleased with the animations I have so far working pretty well, and is pretty smooth as overall. I am pleased with the overall architecture so far as the way it is set up is overall quite extensible and modular.
+
+For improvement, implementation-wise, although I spent a fair bit of time on the architecture and I like it for the most part, there is still some modularity I could add, but would be more a tradeoff of adding features vs. architecture, which there is not really much time for the project relatively. If I had time, I would like to debug XCode/iOS's issue with the changing of the main view for a view controller to allow for a UIPickerView to change the animation view. Beyond that, if I had even more time, I would want the menus to each be dropdown when you select it as I can see that view becoming quite cluttered soon as I add more animations.
+
+I have user-tested using an iPad simuator. I feel that what I have is good in terms of the overall ease
+of use, as Paul was able to use it and liked it without me even being there, as well as other user testing. I was able to decide how I prioritized for implementation based on the user-testing, which was helpful.
+
+I ran into a bunch of trouble with architecture stuff with Swift. Overall Swift was easy to learn and online help-wise it actually was not bad as I know Objective-C and could translate it to Swift pretty easily. For architecture and interface builder, many times I was unsure whether it was a bug with what I was doing, or an XCode
+bug, as many suggestions online just kept saying to close and reopen XCode, or clean project, which sometimes worked... The syntax was overall very easy to implement, as I could just use the Core Animation library that does
+many of the things I want, and has even more options than I need to describe each animation. I do wish I had a bit more features added by this point, but had to spend a fair bit of time learning interaction between views, debugging weird error messages, many times due to "nil" views as Interface Builder was not working right. 
+
 
 
 
